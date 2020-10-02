@@ -186,21 +186,19 @@
                   async : true,
                   dataType : 'json',
                   success: function(response){
-                  
- 
-                    for ( var i=0; i<response.length; i++ ) {
-                    var user_accountID   =    response[i].user_accountID;
-
-                  
-                /*    $('.employeeID' + (i+1)).val (user_accountID);*/
-                   /* $('#addchecker').val (user_accountID);*/
-
                     
-
+                    for ( var i=0; i<response["first"].length; i++ ) {
+                    var user_accountID   =    response["first"][i].user_accountID;
                   }
+                  for ( var i=0; i<response["second"].length; i++ ) {
+                    var accountID   =    response["second"][i].user_accountID;
+                  }
+
                    $('#addchecker').val(user_accountID);
-                 $('#addchecker').select2().trigger('change');  
-                 /* $('#addchecker'+response).html(response.user_accountID);*/
+                  $('#addchecker').select2().trigger('change');  
+                  $('#addapproval').val(accountID);
+                  $('#addapproval').select2().trigger('change');  
+                
 
                 }
                   

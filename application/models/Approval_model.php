@@ -36,9 +36,14 @@ class Approval_model extends CI_Model
 
    {
 
-      $query = $this->db->query("SELECT appr.user_accountID,appl.approvalDescription FROM pos_approvaldet as appr
-                                LEFT JOIN pos_approval AS appl ON appr.approvalID = appl.approvalID WHERE moduleID =$approvalID limit 1");
-      return $query->result();
+      $queryfirst = $this->db->query("SELECT appr.user_accountID,appl.approvalDescription FROM pos_approvaldet as appr
+                                LEFT JOIN pos_approval AS appl ON appr.approvalID = appl.approvalID WHERE moduleID =$approvalID ORDER by appr.approvaldetID ASC limit 1");
+       $querysecond = $this->db->query("SELECT appr.user_accountID,appl.approvalDescription FROM pos_approvaldet as appr
+       LEFT JOIN pos_approval AS appl ON appr.approvalID = appl.approvalID WHERE moduleID =$approvalID ORDER by appr.approvaldetID DESC limit 1");                          
+      // return $query->result();
+      $firstquery = $queryfirst->result(); 
+      $seconddata = $querysecond->result();
+      return array('first' => $firstquery, 'second' => $seconddata);
 
    }
 
