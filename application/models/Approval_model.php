@@ -14,7 +14,7 @@ class Approval_model extends CI_Model
     	$query = $this->db->get();*/
 
     	$queryapprovalmodule = $this->db->query('SELECT * FROM pos_approvalmodule INNER JOIN pos_modulemstr ON pos_modulemstr.moduleID=pos_approvalmodule.moduleID');
-    	$queryuser = $this->db->query("SELECT user_accountID, CONCAT(LPAD(user_accountID, 5, 0), ' - ',user_accountFirstname,', ',user_accountLastname, ' ', user_accountMiddlename) AS fullname FROM  user_account WHERE user_accountStatus = 'Active'");
+    	$queryuser = $this->db->query("SELECT user_accountID, CONCAT(LPAD(user_accountID, 5, 0), ' - ',user_accountFirstname,', ',user_accountLastname, ' ', user_accountMiddlename) AS fullname FROM  user_account WHERE user_accountStatus = '1'");
 
 		$datapprovalmodule = $queryapprovalmodule->result();
 	 	$datauser = $queryuser->result();
@@ -27,9 +27,9 @@ class Approval_model extends CI_Model
 		$query = $this->db->query("SELECT * FROM user_account");
 	    return $query->result();
 
-	    $queryemployee = $query->result();
+	   /* $queryemployee = $query->result();
     	return array('employee' => $queryemployee);
-
+*/
 	}
 
    function search_approval($approvalID)

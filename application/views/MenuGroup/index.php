@@ -71,7 +71,7 @@
                                    data-target="#edit_menu_group" 
                                    id="<?php echo $item->menugroupID; ?>"
                                    data-id="<?php echo $item->menugroupID; ?>"
-                                   data-menugroup="<?php echo $item->menuname; ?>"
+                                   data-menugroup="<?php echo $item->menugroup; ?>"
                                    data-menudescription="<?php echo $item->menudescription; ?>"
                                    data-status="<?php echo $item->menugroupstatus; ?>">
                                 <i style="font-size: 1rem" class="fas fa-pencil-alt text-secondary"></i><span>Edit</span>

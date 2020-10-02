@@ -58,6 +58,7 @@
                           </tr>
                           <tr class="table-tr-approval" >
                             <td>
+                             
                               <select name="addapproval" id="addapproval" class="form-control employeeID select2 alphanumericwithspace" style="width: 100%;" discription="approval">
                                 <option value="" selected disabled>Select Approver</option>
                                  <option value="999">N/A</option>
@@ -178,39 +179,6 @@
          var html = '';
           var approvalID= $(this).attr('id');
 
-         
-        /*
-          html += 
-            '<tr class="table-tr-approval">'+
-                '<td>'+
-                 '<select name="addchecker" id="addchecker" class="form-control input employeeID select2 alphanumericwithspace" style="width: 100%;" description ="checker">'+ 
-                    '<option value="" selected disabled>Select Checker</option>'+
-                    '<option value="999">N/A</option>'+
-                    <?php foreach($module['user'] as $user) {   
-                      echo "'<option value=".'"'.$user->user_accountID.'"'.">".$user->fullname."</option>' +"; 
-                    } ?> 
-                    '</select>'+
-                   '<div class="invalid-feedback" id="add-checker"></div>'+
-                '</td>'+
-                '<td class="text-center">CHECKER</td>'+
-              '</tr>'+
-              '<tr class="table-tr-approval" >'+
-                '<td>'+
-                 '<select name="addapproval" id="addapproval" class="form-control employeeID select2 alphanumericwithspace" style="width: 100%;"  discription="approval">'+
-                    '<option value="" selected disabled>Select Approver</option>'+
-                    '<option value="999">N/A</option>'+
-                   <?php foreach($module['user'] as $user) {   
-                      echo "'<option value=".'"'.$user->user_accountID.'"'.">".$user->fullname."</option>' +"; 
-                    } ?> 
-                    '</select>' +
-                    '<div class="invalid-feedback" id="add-approval"></div>'+
-                '</td>'+
-                '<td class="text-center">APPROVER</td>'+
-              '</tr>';
-
-           $('#edittable').html(html);
-            $('.select2').select2();
-*/
             $.ajax({
                   url : "<?php echo site_url('Approval/approvalrecord');?>",
                   method : "POST",
