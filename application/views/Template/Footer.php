@@ -177,7 +177,16 @@
 
 		// ARJAY INPUT VALIDATION
 		$(document).ready(function() {
-		 	
+			 
+			// --> [A-Z][a-z][\s][0] <-- //
+			$(document).on("keypress", ".alphabetspacezero", function(e){
+				 var keyCode = e.which;
+				 
+				 if ( !( (keyCode >= 48 && keyCode <= 57) ||(keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) ) && keyCode != 13 && keyCode != 32 && keyCode != 48) {
+				 e.preventDefault();
+				 }
+			 });
+
 			 // --> [A-Z][a-z][0-9] <-- //
 			 $(document).on("keypress", ".alphanumeric", function(e){
 				 var keyCode = e.which;

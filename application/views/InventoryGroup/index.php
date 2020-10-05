@@ -1,10 +1,3 @@
-<style>
-  .centertag {
-
-    justify-content: center;
-    text-align: center;
-  }
- </style> 
 <div class="ms-content-wrapper"> 
       <div class="row">
         <div class="col-md-12">
@@ -32,16 +25,50 @@
             <table id="tabledepartment" class="table table-bordered thead-primary dtBasicExample">
               <thead>
                 <tr class="text-center">
-                  <th>NUMBER</th>
-                  <th>INVENTORY GROUP NAME</th>
+                  <th>CODE</th>
+                  <th>NAME</th>
                   <th>DESCRIPTION</th>
                   <th>STATUS</th>
                   <th>ACTION</th>
                 </tr>
               </thead>
                 <tbody>
-               
+                <?php foreach($inventory_groups as $inventory_group) { ?>
                   <tr>
+                    <td><?= $inventory_group["invr_groupCode"] ?></td>
+                    <td><?= $inventory_group["invr_groupName"] ?></td>
+                    <td><?= $inventory_group["invr_groupDescription"] ?></td>
+                    <td class="text-center">
+                      <?php
+                        $status = $inventory_group['invr_groupStatus'] == 1 ? 'Active' : 'Inactive';
+                        $badge = $inventory_group['invr_groupStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
+                      ?>
+                      <span class="badge <?= $badge ?>"><?= $status ?></span>
+                    </td>
+                    <td>
+                      <div class="drop-down float-right">
+                        <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li class="ms-dropdown-list">
+                            <a class="media p-2 btn-edit-modal-inventory_group"
+                              data-invr_groupid="<?= $inventory_group["invr_groupID"] ?>"
+                              data-invr_groupcode="<?= $inventory_group["invr_groupCode"] ?>"
+                              data-invr_groupname="<?= $inventory_group["invr_groupName"] ?>"
+                              data-invr_groupdescription="<?= $inventory_group["invr_groupDescription"] ?>"
+                              data-invr_groupstatus="<?= $inventory_group["invr_groupStatus"] ?>"
+                              href="javascript:void(0);">
+                              <div class="media-body " 
+                                  id="" >
+                                <i class="fas fa-pencil-alt text-secondary" style="font-size: 1rem"></i><span> Edit</span>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                <?php } ?>
+                  <!-- <tr>
                     <td>1</td>
                     <td>Condiments</td>
                     <td>A condiment is a spice, sauce, or preparation that is added to food</td>
@@ -70,7 +97,7 @@
                         </ul>
                       </div>
                     </td>
-                  </tr>
+                  </tr> -->
          
                 </tbody>
             </table>
@@ -94,12 +121,12 @@
           <div class="row">
             <div class="col-12 p-2">
               <label>Group Name <strong class="text-red">*</strong></label>
-              <input type="text" class="form-control" name="" id="add-inventory_groupName" placeholder="Please enter group name">
+              <input type="text" class="form-control alphanumericdashspace" name="" id="add-inventory_groupName" placeholder="Please enter group name">
               <div class="invalid-feedback" id="add-invalid-inventory_groupName"></div>
             </div>
             <div class="col-12 p-2">
               <label>Description <strong class="text-red">*</strong></label>
-              <textarea class="form-control" placeholder="Please enter group description" name="" id="add-inventory_groupDescription"></textarea>
+              <textarea class="form-control alphabetspacezero" placeholder="Please enter group description" name="" id="add-inventory_groupDescription"></textarea>
               <div class="invalid-feedback" id="add-invalid-inventory_groupDescription"></div>
             </div>
           <div class="col-12 p-2">
@@ -126,7 +153,7 @@
   </div>
 </div>
 
-<!-- Confirmation ADD Modal Courier  -->
+<!-- Confirmation ADD  -->
  <div class="modal fade" id="confirmation_add" tabindex="-1" role="dialog" aria-labelledby="confirmation_add" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered modal-min" role="document">
     <div class="modal-content">
@@ -134,37 +161,18 @@
           <button type="button" class="close" id="btn-add-inventorygroup-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <img class="isometric confirmationisometric" width="230px" height="100px" style="text-align: center" src="<?=base_url(); ?>pages/assets/img/modal/confirmation.png">
         <h1 class="text-red text-center font-weight-bold">ADD INVENTORY GROUP</h1>
-            <p class="text-center my-2">Are you sure you want to add new inventory group?</p>
-            <div class="invalid-feedback" id="confirmation-add-invalid"></div>
+            <p class="text-center my-2">Are you sure you want to add inventory group?</p>
+            <div class="invalid-feedback d-flex justify-content-center align-items-center" id="confirmation-add-invalid"></div>
         </div>
         <div class="modal-footer">
           <div class="w-100 text-center">
           <button type="button" data-dismiss="modal" class="btn btn-outline-primary shadow-none" id="btn-add-inventorygroup-close">NO</button>
-            <button type="button" class="btn btn-primary shadow-none" id="add">YES</button>
+            <button type="button" class="btn btn-primary shadow-none" id="btn-add-save-inventory_group">YES</button>
         </div>
         </div>
     </div>
   </div>
 </div>
-<!-- <div class="modal fade" id="add_confirmation" tabindex="-1" role="dialog" aria-labelledby="edit_confirmationcourier" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered modal-min" role="document">
-    <div class="modal-content">
-        <div class="modal-body pb-3">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <img class="isometric confirmationisometric" width="230px" height="100px" style="text-align: center" src="<?=base_url(); ?>pages/assets/img/modal/confirmation.png">
-        <h1 class="text-red text-center">ADD INVENTORY GROUP</h1>
-            <h6 class="text-center my-2 text-secondary">Are you sure you want to add new Inventory Group?</h6>
-            <div class="invalid-feedback" id="confirmation-add-invalid"></div>
-        </div>
-        <div class="modal-footer">
-          <div class="float-right">
-          <button type="button" data-dismiss="modal" class="btn btn-outline-primary shadow-none btn-no-confirmation" id="add_confirmation_no">NO</button>
-            <button type="button" class="btn btn-primary shadow-none" id="edit_confirmation_yes">YES</button>
-        </div>
-        </div>
-    </div>
-  </div>
-</div> -->
 
 
 <!-- EDIT MODAL -->
@@ -176,16 +184,17 @@
            <button type="button" class="close btn-close-edit-inventorygroup" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
        </div>
       <div class="modal-body">
+      <input type="hidden" name="edit-inventory_groupID" id="edit-inventory_groupID">
         <div class="form-group p-3">
           <div class="row">
             <div class="col-12 p-2">
               <label>Group Name <strong class="text-red">*</strong></label>
-              <input type="text" class="form-control" name="" id="edit-inventory_groupName" placeholder="Please enter group name">
+              <input type="text" class="form-control alphanumericdashspace" name="" id="edit-inventory_groupName" placeholder="Please enter group name">
               <div class="invalid-feedback" id="edit-invalid-inventory_groupName"></div>
             </div>
             <div class="col-12 p-2">
               <label>Description <strong class="text-red">*</strong></label>
-              <textarea class="form-control" placeholder="Please enter group description" name="" id="edit-inventory_groupDescription"></textarea>
+              <textarea class="form-control alphabetspacezero" placeholder="Please enter group description" name="" id="edit-inventory_groupDescription"></textarea>
               <div class="invalid-feedback" id="edit-invalid-inventory_groupDescription"></div>
             </div>
           <div class="col-12 p-2">
@@ -211,51 +220,8 @@
     </div>
   </div>
 </div>
-<!-- <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered"  role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <div class="w-100 text-center">
-            <h5 class="modal-title text-red p-2" id="exampleModalCenterTitle">EDIT COURIER</h5>
-        </div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group p-3">
-          <div class="row">
-            <div class="col-12 p-2">
-              <label>Group Name <strong class="text-red">*</strong></label>
-              <input type="text" class="form-control" name="courier_name" placeholder="Please enter group name" value="Condiments">
-            </div>
-            <div class="col-12 p-2">
-              <label>Description <strong class="text-red">*</strong></label>
-              <textarea class="form-control" placeholder="Please enter group description" name="" >A condiment is a spice, sauce, or preparation that is added to food</textarea>
-            </div>
-          <div class="col-12 p-2">
-            <label>Status <strong class="text-red">*</strong></label>
-            <div class="d-flex align-items-center">
-              <span> Inactive </span> &nbsp;
-                  <label class="ms-switch">
-                  <input type="checkbox" checked="" name="addstatus" id="addstatus"> 
-                  <span class="ms-switch-slider ms-switch-success round"></span>
-                  </label> 
-              <span>&nbsp; Active </span>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">CANCEL</button>
-        <button type="button" class="btn btn-primary btn-edit">UPDATE</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
-<!-- Confirmation Edit Modal Courier  -->
+<!-- Confirmation Edit  -->
 <div class="modal fade" id="confirmation_edit" tabindex="-1" role="dialog" aria-labelledby="confirmation_edit" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered modal-min" role="document">
     <div class="modal-content">
@@ -269,35 +235,19 @@
         <div class="modal-footer">
           <div class="w-100 text-center">
           <button type="button" data-dismiss="modal" class="btn btn-outline-primary shadow-none" id="btn-edit-inventorygroup-close">NO</button>
-            <button type="button" class="btn btn-primary shadow-none" id="edit">YES</button>
+            <button type="button" class="btn btn-primary shadow-none" id="btn-edit-save-inventory_group">YES</button>
         </div>
         </div>
     </div>
   </div>
 </div>
-<!-- <div class="modal fade" id="edit_confirmation" tabindex="-1" role="dialog" aria-labelledby="edit_confirmationcourier" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog modal-dialog-centered modal-min" role="document">
-    <div class="modal-content">
-        <div class="modal-body pb-3">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <img class="isometric confirmationisometric" width="230px" height="100px" style="text-align: center" src="<?=base_url(); ?>pages/assets/img/modal/confirmation.png">
-        <h1 class="text-red text-center">UPDATE COURIER</h1>
-            <h6 class="text-center my-2 text-secondary">Are you sure you want to update courier?</h6>
-            <div class="invalid-feedback" id="confirmation-add-invalid"></div>
-        </div>
-        <div class="modal-footer">
-          <div class="float-right">
-          <button type="button" data-dismiss="modal" class="btn btn-outline-primary shadow-none btn-no-confirmation-edit" id="edit_confirmation_no">NO</button>
-            <button type="button" class="btn btn-primary shadow-none" id="edit_confirmation_yes">YES</button>
-        </div>
-        </div>
-    </div>
-  </div>
-</div> -->
 
-
-
-
+<!-- NOTIFICATION -->
+<?php
+  if($this->session->flashdata('success') != ""){
+    echo '<script type="text/javascript"> showSuccessToast("'.$this->session->flashdata("success").'")</script>';
+  }
+?>
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -344,6 +294,68 @@
         }
       }
     }
+
+    const saveInventoryGroup = (data, todo) => {
+      const controllerTodo = todo == "add" ? "<?= site_url('InventoryGroup/save');?>" : "<?= site_url('InventoryGroup/update');?>";
+      $.ajax({
+        url : controllerTodo,
+        method : "POST",
+        data,
+        async : true,
+        dataType : 'json',
+        success: function(data){
+          var result = data.split('|');
+          if(result[0] == "false") {
+            $("#confirmation-"+todo+"-invalid").html(result[1]);
+            showErrorToast(result[1]);
+          } else {
+            window.location.replace('<?= base_url().'InventoryGroup' ?>');
+          }
+        }
+      })
+    }
+
+    $(document).on("click", "#btn-edit-save-inventory_group", function() {
+      const inventory_groupID = $("#edit-inventory_groupID").val().trim();
+      const inventory_groupName = $("#edit-inventory_groupName").val().trim();
+      const inventory_groupDescription = $("#edit-inventory_groupDescription").val().trim();
+      const inventory_groupStatus = $("input[id='edit-inventory_groupStatus']:checked").val() ? 1 : 0;
+
+      const data = {
+        inventory_groupID,
+        inventory_groupName,
+        inventory_groupDescription,
+        inventory_groupStatus
+      };
+      saveInventoryGroup(data, "edit");
+    })
+
+    $(document).on("click", "#btn-add-save-inventory_group", function() {
+      const inventory_groupName = $("#add-inventory_groupName").val().trim();
+      const inventory_groupDescription = $("#add-inventory_groupDescription").val().trim();
+      const inventory_groupStatus = $("input[id='add-inventory_groupStatus']:checked").val() ? 1 : 0;
+
+      const data = {
+        inventory_groupName,
+        inventory_groupDescription,
+        inventory_groupStatus
+      };
+      saveInventoryGroup(data, "add");
+    })
+
+    $(document).on("click", ".btn-edit-modal-inventory_group", function() {
+      const inventory_groupID = $(this).data("invr_groupid");
+      const inventory_groupName = $(this).data("invr_groupname");
+      const inventory_groupDescription = $(this).data("invr_groupdescription");
+      const inventory_groupStatus = $(this).data("invr_groupstatus") == 1 ? true : false;
+
+      $("#edit-inventory_groupID").val(inventory_groupID);
+      $("#edit-inventory_groupName").val(inventory_groupName);
+      $("#edit-inventory_groupDescription").val(inventory_groupDescription);
+      $("input[id='edit-inventory_groupStatus']").prop("checked", inventory_groupStatus);
+
+      $("#edit_inventorygroup").modal("show");
+    })
 
     $(document).on("click", ".btn-close-add-inventorygroup, .btn-close-edit-inventorygroup", function() {
       clearInputs();
