@@ -230,7 +230,7 @@
         <img class="isometric confirmationisometric" width="230px" height="100px" style="text-align: center" src="<?=base_url(); ?>pages/assets/img/modal/confirmation.png">
         <h1 class="text-red text-center font-weight-bold">UPDATE INVENTORY GROUP</h1>
             <p class="text-center my-2">Are you sure you want to update this inventory group?</p>
-            <div class="invalid-feedback" id="confirmation-edit-invalid"></div>
+            <div class="invalid-feedback d-flex justify-content-center align-items-center" id="confirmation-edit-invalid"></div>
         </div>
         <div class="modal-footer">
           <div class="w-100 text-center">
@@ -362,11 +362,13 @@
     })
 
     $(document).on("click", "#btn-edit-inventorygroup-close", function() {
+      $("#confirmation-edit-invalid").html("");
       $("#edit_inventorygroup").modal("show");
       $("#confirmation_edit").modal("hide");
     })
 
     $(document).on("click", "#btn-add-inventorygroup-close", function() {
+      $("#confirmation-add-invalid").html("");
       $("#add_inventorygroup").modal("show");
       $("#confirmation_add").modal("hide");
     })
