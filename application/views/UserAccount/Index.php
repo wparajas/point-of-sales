@@ -59,7 +59,7 @@
                                  data-user_accountfirstname = "<?= $account['user_accountFirstname'] ?>"
                                  data-user_accountmiddlename = "<?= $account['user_accountMiddlename'] ?>"
                                  data-user_accountlastname = "<?= $account['user_accountLastname'] ?>"
-                                 data-user_accounthireddate = "<?= $account['user_accountHireddate'] ?>"
+                                 data-user_accounthireddate = "<?= date("yy-m-d", strtotime($account['user_accountHireddate'])) ?>"
                                  data-user_accountcontactnumber = "<?= $account['user_accountContactnumber'] ?>"
                                  data-user_departmentid = "<?= $account['user_departmentID'] ?>"
                                  data-user_designationid = "<?= $account['user_designationID'] ?>"
@@ -298,7 +298,7 @@
                                <div class="col-md-6 mb-3">
                                   <label for="validationCustom06">Hired Date<code>*</code> </label>
                                   <div class="input-group">
-                                      <input type="date"  id="edit-user_accountHireddate"name="edit-user_accountHireddate" class="form-control date-validate" autocomplete="off" required >
+                                      <input type="date"  id="edit-user_accountHireddate"name="edit-user_accountHireddate"  value="" class="form-control date-validate" autocomplete="off" required >
                                       <div class="invalid-feedback" id="edit-invalid-user_accountHireddate"></div>
                                   </div>
                               </div> 
@@ -518,7 +518,7 @@
 
     const loadDesignation = (data, todo, designationID = "") => {
       $.ajax({
-        url : "<?= site_url('Useraccount/loadDesignation');?>",
+        url : "<?= site_url('UserAccount/loadDesignation');?>",
         method : "POST",
         data,
         async : false,
