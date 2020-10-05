@@ -241,7 +241,7 @@
 
 		$(document).on("click", "#btn-save-company_profile", function(e) {
 			e.preventDefault();
-			$("#company_form").submit();
+			$("#company_form").trigger("submit");
 			// const company_profileTempLogo = document.getElementById('company_profileLogo'); 
 
 			// const company_profileID = $("#company_profileID").val();
@@ -301,7 +301,7 @@
 			// $("#company_profileProvince").attr("disabled", "true");
 			// $("#save-button").hide();
 			// $("#btn-update").show();
-			window.location.reload();
+			window.history.back();
 		})
 
 		$(document).on("click", "#btn-update", function() {
