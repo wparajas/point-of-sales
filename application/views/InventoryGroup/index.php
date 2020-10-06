@@ -68,36 +68,6 @@
                     </td>
                   </tr>
                 <?php } ?>
-                  <!-- <tr>
-                    <td>1</td>
-                    <td>Condiments</td>
-                    <td>A condiment is a spice, sauce, or preparation that is added to food</td>
-                    <td class="text-center">
-                      <span class="badge badge-outline-success">Active</span>
-                    </td>
-                    <td>
-                      <div class="drop-down float-right">
-                        <a href="#" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                          <li class="ms-dropdown-list">
-                            <a class="media p-2" href="#">
-                              <div class="media-body editinventoryitem"
-                             
-                                   data-controls-modal="your_div_id" 
-                                   data-backdrop="static" 
-                                   data-keyboard="false" 
-                                   data-toggle="modal" 
-                                   data-target="#edit_inventorygroup" 
-                                   href="javascript:void(0);" 
-                                   id="" >
-                                <i class="fas fa-pencil-alt text-secondary" style="font-size: 1rem"></i><span> Edit</span>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
-                  </tr> -->
          
                 </tbody>
             </table>

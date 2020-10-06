@@ -328,6 +328,14 @@
 				 
 			 }); 
 
+			 // --> [0-9][.]
+			 $(document).on("keypress", ".numberdot", function(e){
+				 var keyCode = e.which;
+				 if ( !( (keyCode >= 48 && keyCode <= 57) ) && keyCode != 8 && keyCode != 13 && keyCode != 46) {
+				 e.preventDefault();
+				 }
+			 }); 
+
 			 $(document).on("keypress", ".numbersonly", function(e){
 				 var keyCode = e.which;
 				 if ( !( (keyCode >= 48 && keyCode <= 57) ) && keyCode != 8 && keyCode != 13) {

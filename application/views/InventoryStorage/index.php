@@ -349,7 +349,7 @@
     $(document).on("click", "#btn-edit-save-inventory_storage", function() {
       const inventory_storageID = $("#edit-inventory_storageID").val().trim();
       const inventory_storageName = $("#edit-inventory_storageName").val().trim();
-      const inventory_storageDepartment = $("#edit-inventory_storageDepartment").val().trim();
+      const inventory_storageDepartment = $("#edit-inventory_storageDepartment").val() ? $("#edit-inventory_storageDepartment").val() : null;
       const inventory_storageAddress = $("#edit-inventory_storageAddress").val().trim();
       const inventory_storageFloor = $("#edit-inventory_storageFloor").val().trim();
       const inventory_storageBay = $("#edit-inventory_storageBay").val().trim();
@@ -371,7 +371,7 @@
 
     $(document).on("click", "#btn-add-save-inventory_storage", function() {
       const inventory_storageName = $("#add-inventory_storageName").val().trim();
-      const inventory_storageDepartment = $("#add-inventory_storageDepartment").val().trim();
+      const inventory_storageDepartment = $("#add-inventory_storageDepartment").val() ? $("#add-inventory_storageDepartment").val() : null;
       const inventory_storageAddress = $("#add-inventory_storageAddress").val().trim();
       const inventory_storageFloor = $("#add-inventory_storageFloor").val().trim();
       const inventory_storageBay = $("#add-inventory_storageBay").val().trim();
