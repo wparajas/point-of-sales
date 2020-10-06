@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: pointofsale
 -- ------------------------------------------------------
--- Server version	10.4.11-MariaDB
+-- Server version	10.4.14-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -157,6 +157,36 @@ LOCK TABLES `inv_purchaserequest` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `invr_group`
+--
+
+DROP TABLE IF EXISTS `invr_group`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invr_group` (
+  `invr_groupID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `invr_groupCode` varchar(100) NOT NULL,
+  `invr_groupName` varchar(100) NOT NULL,
+  `invr_groupDescription` varchar(150) NOT NULL,
+  `invr_groupStatus` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`invr_groupID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invr_group`
+--
+
+LOCK TABLES `invr_group` WRITE;
+/*!40000 ALTER TABLE `invr_group` DISABLE KEYS */;
+INSERT INTO `invr_group` VALUES (1,'GRP-20-00001','Condiment','A condiment is a spice, sauce, or preparation that is added to foods',1,1,'2020-10-05 06:12:08','2020-10-05 07:06:59'),(9,'IGC-20-00002','Meat','Meat is a meat that meat the meatsssss',0,1,'2020-10-05 07:05:33','2020-10-05 07:27:30'),(10,'IGC-20-00010','Pork','Pork is an example of pork that pork the porks',1,1,'2020-10-05 07:06:12','2020-10-05 07:06:12');
+/*!40000 ALTER TABLE `invr_group` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `invr_storage`
 --
 
@@ -177,7 +207,7 @@ CREATE TABLE `invr_storage` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`invr_storageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,8 +216,42 @@ CREATE TABLE `invr_storage` (
 
 LOCK TABLES `invr_storage` WRITE;
 /*!40000 ALTER TABLE `invr_storage` DISABLE KEYS */;
-INSERT INTO `invr_storage` VALUES (1,NULL,'ISC-20-00001','Warehouse 1','Pasig City','F-1','B-1','L-1',1,1,'2020-09-24 08:01:59','2020-09-24 22:25:15'),(4,NULL,'UC-20-00002','Warehouse 2','Cainta Rizal','F-2','B-1','L-2',1,2,'2020-09-24 23:09:26','2020-09-24 23:10:54'),(8,6,'UC-20-00005','Warehouse 3','Pasig City','F-1','B-1','L-1',1,2,'2020-09-25 00:23:33','2020-09-25 00:23:33'),(9,NULL,'UC-20-00009','Kitchen','Cainta Rizal','','','',1,2,'2020-09-25 00:24:21','2020-09-25 00:24:21');
+INSERT INTO `invr_storage` VALUES (1,NULL,'WAR-20-00001','Warehouse 1','Pasig City','F-1','B-1','L-1',1,1,'2020-09-24 08:01:59','2020-10-05 00:28:21'),(4,NULL,'WAR-20-00002','Warehouse 2','Cainta Rizal','F-2','B-1','L-2',1,2,'2020-09-24 23:09:26','2020-10-05 00:28:24'),(8,3,'WAR-20-00005','Warehouse 3','Pasig City','F-1','B-1','L-1',1,2,'2020-09-25 00:23:33','2020-10-05 00:35:33'),(9,2,'WAR-20-00009','Kitchen','Cainta Rizal','F-2','B-2','L-10',1,2,'2020-09-25 00:24:21','2020-10-05 00:35:08'),(10,NULL,'WAR-20-00010','Warehouse 12','Mandaluyong City','F-1','B-1','L-3',1,1,'2020-10-04 23:42:04','2020-10-05 00:28:36'),(11,NULL,'WAR-20-00011','Warehouse 4','Makati City','N/A','N/A','N/A',1,1,'2020-10-05 00:06:09','2020-10-05 00:28:39'),(12,2,'WAR-20-00013','Warehouse 5','Antipolo City','F-1','B-1','L-0',1,1,'2020-10-05 00:34:37','2020-10-05 01:19:04');
 /*!40000 ALTER TABLE `invr_storage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invr_vendor`
+--
+
+DROP TABLE IF EXISTS `invr_vendor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invr_vendor` (
+  `invr_vendorID` bigint(20) NOT NULL AUTO_INCREMENT,
+  `invr_vendorCode` varchar(100) DEFAULT NULL,
+  `invr_vendorName` varchar(100) DEFAULT NULL,
+  `invr_vendorAddress` varchar(100) DEFAULT NULL,
+  `invr_vendorContactperson` varchar(60) DEFAULT NULL,
+  `invr_vendorContactnumber` varchar(30) DEFAULT NULL,
+  `invr_vendorTin` varchar(45) DEFAULT NULL,
+  `invr_vendorVat` int(11) DEFAULT NULL,
+  `invr_vendorStatus` int(11) DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`invr_vendorID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invr_vendor`
+--
+
+LOCK TABLES `invr_vendor` WRITE;
+/*!40000 ALTER TABLE `invr_vendor` DISABLE KEYS */;
+INSERT INTO `invr_vendor` VALUES (1,'SUP-20-00001','San Miguel Corp.','Pasig City','Miguel Ortiz','09099054789','879-895-326-465',1,1,1,'2020-10-05 02:36:20','2020-10-05 02:36:20'),(2,'SUP-20-00002','MY San','Pasig City','Arjay Pogi','09894659653','543-265-621-312',1,1,1,'2020-10-05 03:37:33','2020-10-05 03:37:33'),(3,'SUP-20-00003','Shrimp Corp','Pasig City','Nieto Gilly','0923456789','132-163-672-174',0,0,1,'2020-10-05 03:44:10','2020-10-05 04:02:37'),(4,'SUP-20-00004','GTC','Pasig City','Amy Han','09213543543','958-784-537-967',0,0,1,'2020-10-05 05:40:36','2020-10-05 05:40:36');
+/*!40000 ALTER TABLE `invr_vendor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -230,7 +294,7 @@ CREATE TABLE `pos_approvaldet` (
   `approvalLevel` int(11) NOT NULL,
   `lastapprover` int(11) NOT NULL,
   PRIMARY KEY (`approvaldetID`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +303,7 @@ CREATE TABLE `pos_approvaldet` (
 
 LOCK TABLES `pos_approvaldet` WRITE;
 /*!40000 ALTER TABLE `pos_approvaldet` DISABLE KEYS */;
-INSERT INTO `pos_approvaldet` VALUES (23,1,1,0,1,0),(24,1,2,0,2,1),(31,2,1,0,1,0),(32,2,2,0,2,1),(39,3,2,0,1,0),(40,3,1,0,2,1);
+INSERT INTO `pos_approvaldet` VALUES (31,2,1,0,1,0),(32,2,2,0,2,1),(39,3,2,0,1,0),(40,3,1,0,2,1),(41,1,1,0,1,0),(42,1,2,0,2,1),(43,5,1,0,1,0),(44,5,2,0,2,1);
 /*!40000 ALTER TABLE `pos_approvaldet` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -417,7 +481,7 @@ CREATE TABLE `user_account` (
   `user_accountMiddlename` varchar(100) DEFAULT NULL,
   `user_accountLastname` varchar(100) NOT NULL,
   `user_accountContactnumber` varchar(100) NOT NULL,
-  `user_accountHireddate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `user_accountHireddate` date NOT NULL,
   `user_accountStatus` bigint(20) NOT NULL,
   `created_by` bigint(20) NOT NULL,
   `updated_by` bigint(20) NOT NULL,
@@ -433,7 +497,7 @@ CREATE TABLE `user_account` (
 
 LOCK TABLES `user_account` WRITE;
 /*!40000 ALTER TABLE `user_account` DISABLE KEYS */;
-INSERT INTO `user_account` VALUES (1,1,1,1,1,'EMP-20-00001','admin','admin','Akosi','Hatdog','Admin','09099054766','2020-10-02 03:52:24',1,1,1,'2020-09-07 02:49:19','2020-10-02 03:52:24'),(2,1,2,2,2,'EMP-20-00002','cashier','cashier','Akosi','Halaman','Cashier','09099054769','2020-10-02 03:52:31',1,1,1,'2020-09-07 02:49:19','2020-10-02 03:52:31');
+INSERT INTO `user_account` VALUES (1,1,1,1,1,'EMP-20-00001','admin','admin','Akosi','Hatdog','Admin','09099054766','2020-10-03',1,1,1,'2020-09-07 02:49:19','2020-10-05 08:30:28'),(2,1,2,2,2,'EMP-20-00002','cashier','cashier','Akosi','Halaman','Cashier','09099054769','2020-10-02',1,1,1,'2020-09-07 02:49:19','2020-10-02 03:52:31');
 /*!40000 ALTER TABLE `user_account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -461,7 +525,7 @@ CREATE TABLE `user_department` (
 
 LOCK TABLES `user_department` WRITE;
 /*!40000 ALTER TABLE `user_department` DISABLE KEYS */;
-INSERT INTO `user_department` VALUES (1,'DEP-20-00001','Information Technology',1,'2020-09-07 02:41:46','2020-10-02 03:55:50'),(2,'DEP-20-00002','Sales',1,'2020-09-07 02:44:57','2020-10-02 03:55:52'),(3,'DEP-20-00003','wewe',1,'2020-10-02 04:00:13','2020-10-02 04:00:13');
+INSERT INTO `user_department` VALUES (1,'DEP-20-00001','Information Technology',1,'2020-09-07 02:41:46','2020-10-02 03:55:50'),(2,'DEP-20-00002','Sales',1,'2020-09-07 02:44:57','2020-10-02 03:55:52'),(3,'DEP-20-00003','Finance',1,'2020-10-02 04:00:13','2020-10-05 00:36:31');
 /*!40000 ALTER TABLE `user_department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -596,4 +660,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-02 15:04:18
+-- Dump completed on 2020-10-05 16:34:11

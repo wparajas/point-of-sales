@@ -138,7 +138,7 @@
 
 	        		if (username == "" || username == null || username == undefined) {
 	        			$("#username").addClass("is-invalid");
-	        			$("#invalid-username").html("Please insert required field");
+	        			$("#invalid-username").html("Please input required field");
 	        			countErrors++;
 	        		} else {
 	        			$("#username").removeClass("is-invalid");
@@ -148,7 +148,7 @@
 
 	        		if (password == "" || password == null || password == undefined) {
 	        			$("#password").addClass("is-invalid");
-	        			$("#invalid-password").html("Please insert required field");
+	        			$("#invalid-password").html("Please input required field");
 	        			countErrors++;
 	        		} else {
 	        			$("#password").removeClass("is-invalid");
