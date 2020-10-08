@@ -25,6 +25,8 @@
 	      		background-position: center;
 	      		background-size: cover;
 	      		background-color: rgba(0,0,0,.5);
+				min-height: 100vh;
+				height: auto;
 	    	}
 	    	#login-logo {
 	      		max-height: 10rem;
@@ -44,7 +46,7 @@
 	</head>
 	<body>
 		<div class="ms-content-wrapper ms-auth" id="login-container">
-	      	<div class="row" style="padding-top: 10rem; margin-right: 0">
+	      	<div class="row" style="padding-top: 8rem; padding-bottom: 10rem; margin-right: 0">
 		        <div class="offset-lg-4 offset-md-3 offset-sm-2 col-lg-4 col-md-6 col-sm-8 px-5">
 		          	<form class="needs-validation" novalidate="" method="post" action="<?php echo base_url(); ?>Login/login_validation" id="login-form">
 			            <div class="text-center">
@@ -75,14 +77,6 @@
 			            <div class="mb-2">
 			              	<label for="validationCustom09" class="font-weight-bold">Password</label>
 			              	<div class="input-group">
-			                	<!-- <input type="password" 
-			                      class='form-control alphanumeric inputs <?php if($this->session->flashdata("error")!="") echo "is-invalid" ?>'
-			                      id="password"
-			                      name="password"
-			                      autocomplete="off"
-			                      placeholder="Password" required="">
-			                	<div class="invalid-feedback">Please provide a password</div> 
-			              	</div> -->
 			              	<div class="input-group">
 			                  <input type="password" 
 			                  		 class='form-control inputs <?php if($this->session->flashdata("error")!="") echo "is-invalid" ?>' 
@@ -138,7 +132,7 @@
 
 	        		if (username == "" || username == null || username == undefined) {
 	        			$("#username").addClass("is-invalid");
-	        			$("#invalid-username").html("Please input required field");
+	        			$("#invalid-username").html("Please provide an username");
 	        			countErrors++;
 	        		} else {
 	        			$("#username").removeClass("is-invalid");
@@ -148,7 +142,7 @@
 
 	        		if (password == "" || password == null || password == undefined) {
 	        			$("#password").addClass("is-invalid");
-	        			$("#invalid-password").html("Please input required field");
+	        			$("#invalid-password").html("Please provide a password");
 	        			countErrors++;
 	        		} else {
 	        			$("#password").removeClass("is-invalid");

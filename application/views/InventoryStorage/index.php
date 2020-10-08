@@ -26,14 +26,14 @@
             <table id="tableinventorystorage" class="table table-bordered thead-primary dtBasicExample">
               <thead>
                 <tr class="text-center">
-                  <th>STORAGE CODE</th>
+                  <th style="width: 120px">STORAGE CODE</th>
                   <th>STORAGE NAME</th>
                   <th>ADDRESS</th>
-                  <th>FLOOR</th>
-                  <th>BAY</th>
-                  <th>LEVEL</th>
-                  <th>STATUS</th>
-                  <th>ACTION</th>
+                  <th style="width: 50px">FLOOR</th>
+                  <th style="width: 50px">BAY</th>
+                  <th style="width: 50px">LEVEL</th>
+                  <th style="width: 50px">STATUS</th>
+                  <th style="width: 50px">ACTION</th>
                 </tr>
               </thead>
                 <tbody>
@@ -51,7 +51,7 @@
                           $status = $storage['invr_storageStatus'] == 1 ? 'Active' : 'Inactive';
                           $badge = $storage['invr_storageStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                         ?>
-                        <span class="badge <?= $badge ?>"><?= $status ?></span>
+                        <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                       </td>
                       <td>
                         <div class="drop-down float-right">

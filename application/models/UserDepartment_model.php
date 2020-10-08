@@ -43,13 +43,15 @@ class UserDepartment_model extends CI_Model
 
 	public function canChangeStatus($user_departmentID)
 	{
-		$query1 = $this->db->query("SELECT * FROM user_account WHERE user_departmentID = ".$user_departmentID." AND user_accountStatus = 1");
+		$query1 = $this->db->query("SELECT * FROM user_designation WHERE user_departmentID = ".$user_departmentID." AND user_designationStatus = 1");
 		$result1 = $query1->result_array();
-		$count1 = count($result1);
+		$query2 = $this->db->query("SELECT * FROM user_account WHERE user_departmentID = ".$user_departmentID." AND user_accountStatus = 1");
+		$result2 = $query2->result_array();
+		$count = count($result1) + count($result2);
 		// $query2 = $this->db->query("SELECT * FROM user_account WHERE user_departmentID = ".$user_departmentID." AND user_accountStatus = 1");
 		// $result2 = $query2->result_array();
 		// $count2 = count($result2);
-		return $count1;
+		return $count > 0 ? false : true;
 	}
 
 	public function saveUserDepartment($user_departmentName, $user_departmentStatus)
@@ -87,7 +89,7 @@ class UserDepartment_model extends CI_Model
 			$getUserDepartment = $this->getUserDepartment($user_departmentID);
 			$user_departmentOldStatus = $getUserDepartment[0]['user_departmentStatus'];
 
-			if ($user_departmentOldStatus != $user_departmentStatus && $this->canChangeStatus($user_departmentID) > 0) {
+			if ($user_departmentOldStatus != $user_departmentStatus && !$this->canChangeStatus($user_departmentID)) {
 				return "false|".$user_departmentName." is currently in used";
 			} else {
 				$data = array(

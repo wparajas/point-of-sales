@@ -24,12 +24,12 @@
               <table id="tabledepartment" class="table table-bordered thead-primary dtBasicExample">
                 <thead>
                   <tr class="text-center">
-                    <th>DESIGNATION CODE</th>
+                    <th style="width: 150px">DESIGNATION CODE</th>
                     <th>DEPARTMENT</th>
                     <th>DESIGNATION</th>
                     <th>LIMIT</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
+                    <th style="width: 50px">STATUS</th>
+                    <th style="width: 50px">ACTION</th>
                   </tr>
                 </thead>
                   <tbody>
@@ -39,13 +39,13 @@
                         <td><?= $designation['user_designationCode'] ?></td>
                         <td><?= $designation['user_departmentName'] ?></td>
                         <td><?= $designation['user_designationName'] ?></td>
-                        <td class="text-right"><span class="float-left">₱</span><?= formatcurrency($designation['user_designationLimit'], 'PHP') ?></td>
+                        <td class="text-right"><span class="text-left">₱</span> <?= formatcurrency($designation['user_designationLimit'], 'PHP') ?></td>
                         <td class="text-center">
                           <?php
                             $status = $designation['user_designationStatus'] == 1 ? 'Active' : 'Inactive';
                             $badge = $designation['user_designationStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                           ?>
-                          <span class="badge <?= $badge ?>"><?= $status ?></span>
+                          <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                         </td>
                         <td>
                           <div class="drop-down float-right">

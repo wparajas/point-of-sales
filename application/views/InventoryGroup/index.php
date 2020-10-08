@@ -25,11 +25,11 @@
             <table id="tabledepartment" class="table table-bordered thead-primary dtBasicExample">
               <thead>
                 <tr class="text-center">
-                  <th>CODE</th>
+                  <th style="width: 100px">CODE</th>
                   <th>NAME</th>
                   <th>DESCRIPTION</th>
-                  <th>STATUS</th>
-                  <th>ACTION</th>
+                  <th style="width: 50px">STATUS</th>
+                  <th style="width: 50px">ACTION</th>
                 </tr>
               </thead>
                 <tbody>
@@ -43,7 +43,7 @@
                         $status = $inventory_group['invr_groupStatus'] == 1 ? 'Active' : 'Inactive';
                         $badge = $inventory_group['invr_groupStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                       ?>
-                      <span class="badge <?= $badge ?>"><?= $status ?></span>
+                      <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                     </td>
                     <td>
                       <div class="drop-down float-right">
@@ -79,7 +79,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="add_inventorygroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="add_inventorygroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered"  role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between align-items-start bg-primary">
@@ -146,7 +146,7 @@
 
 
 <!-- EDIT MODAL -->
-<div class="modal fade" id="edit_inventorygroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="edit_inventorygroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered"  role="document">
     <div class="modal-content">
       <div class="modal-header d-flex justify-content-between align-items-start bg-primary">

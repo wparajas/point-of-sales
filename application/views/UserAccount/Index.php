@@ -20,14 +20,14 @@
             <table id="tableemployee" class="table table-bordered thead-primary dtBasicExample">
               <thead>
                 <tr class="text-center">
-                  <th>USER CODE</th>
+                  <th style="width: 100px">USER CODE</th>
                   <th>NAME</th>
                   <th>USERNAME</th>
                   <th>ROLE</th>
                   <th>CONTACT NUMBER</th>
                   <th>HIRED DATE</th>
-                  <th>STATUS</th>
-                  <th>ACTION</th>
+                  <th style="width: 50px">STATUS</th>
+                  <th style="width: 50px">ACTION</th>
                 </tr>
               </thead>
                 <tbody>
@@ -40,13 +40,13 @@
                       <td><?= $account['user_accountUsername'] ?></td>
                       <td><?= $account['user_roleName'] ?></td>
                       <td><?= $account['user_accountContactnumber'] ?></td>
-                      <td><?= date("M d, Y", strtotime($account['user_accountHireddate'])) ?></td>
+                      <td><?= date("F d, Y", strtotime($account['user_accountHireddate'])) ?></td>
                       <td class="text-center">
                         <?php
                           $status = $account['user_accountStatus'] == 1 ? 'Active' : 'Inactive';
                           $badge = $account['user_accountStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                         ?>
-                        <span class="badge <?= $badge ?>"><?= $status ?></span>
+                        <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                       </td>
                       <td>
                         <div class="drop-down float-right">
@@ -102,8 +102,8 @@
             <div class="modal-body">
               <div class="col-lg-12">
                 <ul class="nav nav-tabs tabs-bordered" role="tablist">
-                    <li class="active"><a href="#addinfo"  role="tab" data-toggle="tab" class="active">Information</a></li>
-                    <li><a href="#addroletab" role="tab" data-toggle="tab">Account</a>
+                    <li class="active"><a href="#addinfo" id="btn-addinfo" role="tab" data-toggle="tab" class="active">Information</a></li>
+                    <li><a href="#addroletab" id="btn-addaccount" role="tab" data-toggle="tab">Account</a>
                     </li>
                 </ul>
               <form method="post">
@@ -277,8 +277,8 @@
             <div class="modal-body">
               <div class="col-lg-12">
                 <ul class="nav nav-tabs tabs-bordered" role="tablist">
-                    <li class="active"><a href="#editinfo"  role="tab" data-toggle="tab" class="active">Information</a></li>
-                    <li><a href="#editroletab" role="tab" data-toggle="tab">Account</a>
+                    <li class="active"><a href="#editinfo" id="btn-editinfo" role="tab" data-toggle="tab" class="active">Information</a></li>
+                    <li><a href="#editroletab" id="btn-editaccount" role="tab" data-toggle="tab">Account</a>
                     </li>
                 </ul>
               <form method="post">
@@ -449,7 +449,10 @@
 <script type="text/javascript">
    $(document).ready(function() {
 
-    $('.select2').select2();
+    $(".select2").select2({
+      theme: "bootstrap"
+    });
+
      $('#tableemployee').DataTable({
         "paging": true
       // false to disable pagination (or any other option)
@@ -477,7 +480,22 @@
         }
       }
       if (count > 0) {
+        const infoTab = [todo+"-user_accountFirstname", todo+"-user_accountHireddate", todo+"-user_accountDepartment", todo+"-user_accountLastname", todo+"-user_accountDesignation", todo+"-user_accountContactnumber"];
+        // const accountTab = [todo+"-user_accountUsername", todo+"-user_accountPassword", todo+"-user_accountRole"];
+        if (infoTab.includes(todo+"-"+focusElem[0])) {
+          $("#"+todo+"roletab").removeClass("active show");
+          $("#"+todo+"info").addClass("active show");
+          $("#btn-"+todo+"account").removeAttr("class");
+          $("#btn-"+todo+"info").addClass("active show");
+        } else {
+          $("#"+todo+"info").removeClass("active show");
+          $("#"+todo+"roletab").addClass("active show");
+          // $("#btn-"+todo+"info").removeClass("active show");
+          $("#btn-"+todo+"info").removeAttr("class");
+          $("#btn-"+todo+"account").addClass("active show");
+        }
         $("#"+todo+"-"+focusElem[0]).focus();
+        
         return false;
       } else {
         return true;
@@ -565,6 +583,7 @@
         user_accountPassword,
         user_accountRole
       };
+      // console.log(user_accountID);
       saveUserAccount(data, "edit");
     });
 

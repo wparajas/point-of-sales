@@ -11,9 +11,11 @@ class Login_model extends CI_Model {
 
 	public function login_validation($username, $password)
 	{
-		$this->db->where('user_accountUsername', $username);
-		$this->db->where('user_accountPassword', $password);
-		$query = $this->db->get('user_account');
+		// $this->db->where('user_accountUsername', $username);
+		// $this->db->where('user_accountPassword', $password);
+		// $query = $this->db->get('user_account');
+		// return $query;
+		$query = $this->db->query("SELECT * FROM user_account WHERE BINARY user_accountUsername = BINARY '$username' AND BINARY user_accountPassword = '$password'");
 		return $query;
 	}
 }

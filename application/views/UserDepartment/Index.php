@@ -21,10 +21,10 @@
               <table id="tabledepartment" class="table table-bordered thead-primary dtBasicExample">
                 <thead>
                   <tr class="text-center">
-                    <th>DEPARTMENT CODE</th>
+                    <th style="width: 150px">DEPARTMENT CODE</th>
                     <th>DEPARTMENT NAME</th>
-                    <th>STATUS</th>
-                    <th>ACTION</th>
+                    <th style="width: 50px">STATUS</th>
+                    <th style="width: 50px">ACTION</th>
                   </tr>
                 </thead>
                   <tbody>
@@ -38,7 +38,7 @@
                             $status = $department['user_departmentStatus'] == 1 ? 'Active' : 'Inactive';
                             $badge = $department['user_departmentStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                           ?>
-                          <span class="badge <?= $badge ?>"><?= $status ?></span>
+                          <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                         </td>
                         <td>
                           <div class="drop-down float-right">

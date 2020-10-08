@@ -23,14 +23,14 @@
                       <table id="table-inventory-vendor" class="table table-bordered thead-primary dtBasicExample">
                         <thead>
                           <tr class="text-center">
-                            <th>CODE</th>
+                            <th style="width: 100px">CODE</th>
                             <th>SUPPLIER NAME</th>
                             <th>ADDRESS</th>
                             <th>CONTACT PERSON</th>
-                            <th>CONTACT NUMBER</th>
-                            <th>TIN NUMBER</th>
-                            <th>STATUS</th>
-                            <th>ACTION</th>
+                            <th >CONTACT NUMBER</th>
+                            <th style="width: 110px">TIN NUMBER</th>
+                            <th style="width: 50px">STATUS</th>
+                            <th style="width: 50px">ACTION</th>
                           </tr>
                         </thead>
                           <tbody>
@@ -47,7 +47,7 @@
                                     $status = $inventory_vendor['invr_vendorStatus'] == 1 ? 'Active' : 'Inactive';
                                     $badge = $inventory_vendor['invr_vendorStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                                   ?>
-                                  <span class="badge <?= $badge ?>"><?= $status ?></span>
+                                  <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                                 </td>
                                 <td>
                                   <div class="drop-down float-right">

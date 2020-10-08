@@ -24,15 +24,15 @@
                       <table id="tablecourier" class="table table-bordered thead-primary dtBasicExample">
                         <thead>
                           <tr class="text-center">
-                            <th>ITEM CODE</th>
+                            <th style="width: 90px">ITEM CODE</th>
                             <th>ITEM NAME</th>
                             <th>INVENTORY GROUP</th>
-                            <th>VAT</th>
+                            <th style="width: 30px">VAT</th>
                             <th>BASE PRICE</th>
                             <th>UOM</th>
                             <th>WAREHOUSE</th>
-                            <th>STATUS</th>
-                            <th>ACTION</th>
+                            <th style="width: 50px">STATUS</th>
+                            <th style="width: 50px">ACTION</th>
                           </tr>
                         </thead>
                           <tbody>
@@ -51,7 +51,7 @@
                                   $status = $inventory_item['invr_itemStatus'] == 1 ? 'Active' : 'Inactive';
                                   $badge = $inventory_item['invr_itemStatus'] == 1 ? 'badge-outline-success' : 'badge-outline-danger';
                                 ?>
-                                <span class="badge <?= $badge ?>"><?= $status ?></span>
+                                <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                               </td>
                               <td>
                                 <div class="drop-down float-right">
@@ -82,40 +82,6 @@
                               </td>
                             </tr>
                           <?php } ?>
-
-                            <!-- <tr>
-                              <td>IC-20-00001</td>
-                              <td>Soy Sauce</td>
-                              <td>Seasonings</td>
-                              <td>Yes</td>
-                              <td class="text-right">150.00</td>
-                              <td>pcs</td>
-                              <td>WAR-20-00001</td>
-                              <td class="text-center">
-                                <span class="badge badge-outline-success">Active</span>
-                              </td>
-                              <td>
-                                <div class="drop-down float-right">
-                                  <a href="#" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
-                                  <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="ms-dropdown-list">
-                                      <a class="media p-2" href="#">
-                                        <div class="media-body editcourier"
-                                             data-controls-modal="your_div_id" 
-                                             data-backdrop="static" 
-                                             data-keyboard="false" 
-                                             data-toggle="modal" 
-                                             data-target="#edit_inventoryitem" 
-                                             href="javascript:void(0);" 
-                                             id="" >
-                                          <i class="fas fa-pencil-alt text-secondary" style="font-size: 1rem"></i><span> Edit</span>
-                                        </div>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </td>
-                            </tr> -->
                    
                           </tbody>
                       </table>

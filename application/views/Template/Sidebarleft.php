@@ -16,6 +16,15 @@
      $permission[$index] = $single->modulestatus;
      $index++;
   }
+
+  $url = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+  function strposa($haystack, $needle, $offset=0) {
+    if(!is_array($needle)) $needle = array($needle);
+    foreach($needle as $query) {
+        if(strpos($haystack, $query, $offset) !== false) return true; // stop on first true result
+    }
+    return false;
+  }
 ?>
 
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
@@ -138,11 +147,14 @@
         </li>
       <?php } ?>
 
-      <?php if ($permission[14] || $permission[15] || $permission[16] || $permission[17] || $permission[18] || $permission[19] || $permission[20] || $permission[21] || $permission[22] || $permission[23] || $permission[24] || $permission[25] || $permission[26]) { ?>
+      <?php if ($permission[14] || $permission[15] || $permission[16] || $permission[17] || $permission[18] || $permission[19] || $permission[20] || $permission[21] || $permission[22] || $permission[23] || $permission[24] || $permission[25] || $permission[26]) { 
+        $inventory = ["InventoryGroup", "InventoryItem", "PurchaseRequest", "PurchaseOrder", "ListStocks", "StockInWarehouse", "StockOutWarehouse", "StockInDepartment", "TransferRequest"];
+        $inventoryClass = strposa($url, $inventory, 1) ? "show" : "";
+      ?>
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#inventory_module" aria-expanded="false" aria-controls="inventory_module"> <span><i class="fas fa-boxes"></i>Inventory </span>
           </a>
-          <ul id="inventory_module" class="collapse" aria-labelledby="inventory_module" data-parent="#side-nav-accordion">
+          <ul id="inventory_module" class="collapse <?= $inventoryClass ?>" aria-labelledby="inventory_module" data-parent="#side-nav-accordion">
 
             <?php if ($permission[14] || $permission[15]) { ?>
               <li class="menu-item">
@@ -240,11 +252,14 @@
         </li>
       <?php } ?>
 
-      <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31] || $permission[32] || $permission[33] || $permission[34] || $permission[35] || $permission[36] || $permission[37] || $permission[38]) { ?>
+      <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31] || $permission[32] || $permission[33] || $permission[34] || $permission[35] || $permission[36] || $permission[37] || $permission[38]) { 
+        $pointofsale = ["MenuGroup", "MenuCategory", "MenuItem", "DiscountSetup", "Payment", "PostSchedule", "CashTray", "OrderTaking", "Recall", "DiscountSetup"];
+        $pointofsaleClass = strposa($url, $pointofsale, 1) ? "show" : "";
+      ?>
         <li class="menu-item">
           <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pointofsale" aria-expanded="false" aria-controls="pointofsale"> <span><i class="fas fa-utensils"></i>Point of Sale </span>
           </a>
-          <ul id="pointofsale" class="collapse" aria-labelledby="pointofsale" data-parent="#side-nav-accordion">
+          <ul id="pointofsale" class="collapse <?= $pointofsaleClass ?>" aria-labelledby="pointofsale" data-parent="#side-nav-accordion">
 
             <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31]) { ?>
               <li class="menu-item">
