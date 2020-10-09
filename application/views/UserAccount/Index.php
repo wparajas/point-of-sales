@@ -48,8 +48,8 @@
                         ?>
                         <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                       </td>
-                      <td>
-                        <div class="drop-down float-right">
+                      <td class="text-center">
+                        <!-- <div class="drop-down float-right">
                           <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
                           <ul class="dropdown-menu dropdown-menu-right">
                             <li class="ms-dropdown-list">
@@ -75,7 +75,25 @@
                               </a>
                             </li>
                           </ul>
-                        </div>
+                        </div> -->
+                        <a class="btn btn-primary btn-edit-modal-account p-0" 
+                          href="javascript:void(0);"
+                          style="min-width: 80px"
+                          data-user_accountid = "<?= $account['user_accountID'] ?>"
+                          data-user_accountfirstname = "<?= $account['user_accountFirstname'] ?>"
+                          data-user_accountmiddlename = "<?= $account['user_accountMiddlename'] ?>"
+                          data-user_accountlastname = "<?= $account['user_accountLastname'] ?>"
+                          data-user_accounthireddate = "<?= date("yy-m-d", strtotime($account['user_accountHireddate'])) ?>"
+                          data-user_accountcontactnumber = "<?= $account['user_accountContactnumber'] ?>"
+                          data-user_departmentid = "<?= $account['user_departmentID'] ?>"
+                          data-user_designationid = "<?= $account['user_designationID'] ?>"
+                          data-user_accountstatus = "<?= $account['user_accountStatus'] ?>"
+                          data-user_accountusername = "<?= $account['user_accountUsername'] ?>"
+                          data-user_accountpassword = "<?= $account['user_accountPassword'] ?>"
+                          data-user_roleid = "<?= $account['roleID'] ?>"
+                          data-user_departmentname="<?= $account['user_departmentName'] ?>">
+                          <i class="fas fa-pencil-alt" style="font-size: .8rem"></i>Edit
+                        </a>
                       </td>
                     </tr>
 

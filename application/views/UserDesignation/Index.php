@@ -47,8 +47,8 @@
                           ?>
                           <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                         </td>
-                        <td>
-                          <div class="drop-down float-right">
+                        <td class="text-center">
+                          <!-- <div class="drop-down float-right">
                             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
                             <ul class="dropdown-menu dropdown-menu-right">
                               <li class="ms-dropdown-list">
@@ -68,7 +68,19 @@
                                 </a>
                               </li>
                             </ul>
-                          </div>
+                          </div> -->
+                          <a class="btn btn-primary btn-edit-modal-designation p-0" 
+                            href="javascript:void(0);"
+                            data-user_designationid = "<?= $designation['user_designationID'] ?>"
+                            data-user_designationcode = "<?= $designation['user_designationCode'] ?>"
+                            data-user_designationname = "<?= $designation['user_designationName'] ?>"
+                            data-user_designationlimit = "<?= $designation['user_designationLimit'] ?>"
+                            data-user_departmentid = "<?= $designation['user_departmentID'] ?>"
+                            data-user_designationstatus = "<?= $designation['user_designationStatus'] ?>"
+                            data-user_departmentName = "<?= $designation['user_departmentName'] ?>"
+                            style="min-width: 80px">
+                            <i class="fas fa-pencil-alt" style="font-size: .8rem"></i>Edit
+                          </a>
                         </td>
                       </tr>
                     <?php } ?>
@@ -263,9 +275,36 @@
     const elemArrText = ["Department", "Designation"];
     const elemArrLength = elemArr.length;
 
+    const checkDepartment = (department, todo) => {
+      // aria-labelledby="select2-add-user_designationDepartment-container"
+      let count = 0;
+      console.log(department);
+      if (department != "" || department != null) {
+        console.log(department+"Not error");
+        // $('[aria-labelledby="select2-'+todo+'-user_designationDepartment-container"]').removeClass("has-error");
+        $('[aria-labelledby="select2-'+todo+'-user_designationDepartment-container"]').addClass("no-error");
+        $("#"+todo+"-invalid-user_designationDepartment").html("");
+      } else {
+        console.log(department+"Error");
+        count++;
+        // $('[aria-labelledby="select2-'+todo+'-user_designationDepartment-container"]').removeClass("no-error");
+        // $('[aria-labelledby="select2-'+todo+'-user_designationDepartment-container"]').addClass("has-error");
+        $("#"+todo+"-invalid-user_designationDepartment").html("Department is required");
+      }
+      return count > 0 ? false : true;
+    }
+
     function validateInputs(todo = "add") {
       const focusElem = [];
       let count = 0;
+
+      const department = $("#"+todo+"-user_designationDepartment").val();
+      console.log(department, todo);
+      const myDepartment = checkDepartment(department, todo);
+      if (!myDepartment) {
+        count++;
+      }
+
       for (var i=0; i<elemArrLength; i++) {
         const elem = $("#"+todo+"-"+elemArr[i]).val();
         if (elem == "" || elem == null || elem == undefined) {

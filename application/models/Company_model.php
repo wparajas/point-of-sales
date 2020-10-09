@@ -25,16 +25,15 @@
 			return $query->result_array();
 		}
 
-		// public function insert_logo($logo)
-		// {
-		// 	return $logo;
-		// }
-
 		public function saveCompanyProfile($company_profileID, $company_profile)
 		{
 			$this->db->where("company_profileID", $company_profileID);
-			$this->db->update("company_profile", $company_profile);
-			return true;
+			$query = $this->db->update("company_profile", $company_profile);
+			if ($query) {
+				return "true|Company updated successfully";
+			} else {
+				return "false|There was an error updating company";
+			}
 		}
 
 		public function saveCompanyBusiness($company_profileID, $company_business)
@@ -42,8 +41,12 @@
 			$this->db->where("company_profileID", $company_profileID);
 			$this->db->delete("company_business");
 
-			$this->db->insert_batch("company_business", $company_business);
-			return true;
+			$query = $this->db->insert_batch("company_business", $company_business);
+			if ($query) {
+				return "true|Company updated successfully";
+			} else {
+				return "false|There was an error updating company";
+			}
 		}
 
 		public function updateCompanyLogo($company_profileID, $data)

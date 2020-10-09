@@ -17,14 +17,6 @@
      $index++;
   }
 
-  $url = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
-  function strposa($haystack, $needle, $offset=0) {
-    if(!is_array($needle)) $needle = array($needle);
-    foreach($needle as $query) {
-        if(strpos($haystack, $query, $offset) !== false) return true; // stop on first true result
-    }
-    return false;
-  }
 ?>
 
 <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
@@ -44,19 +36,87 @@
         </li>
       <?php } ?>
 
-      <?php if ($permission[2]) { ?>
+      <li class="menu-item ml-3 font-weight-bold" style="letter-spacing: .3px"><span>POINT OF SALE</span> </li>
+
+      <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31]) { ?>
         <li class="menu-item">
-          <a href="<?php echo base_url(); ?>Company"> <span><i class="fa fa-building"></i>Company Setup</span>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos_masterfile" aria-expanded="false" aria-controls="pos_masterfile"> <span>Masterfile </span>
           </a>
+          <ul id="pos_masterfile" class="collapse pl-0" aria-labelledby="pos_masterfile">
+
+            <?php if ($permission[27]) { ?>
+              <li><a href="<?= base_url().'MenuGroup' ?>">Menu Group</a></li>
+            <?php } ?>
+
+            <?php if ($permission[28]) { ?>
+              <li><a href="<?= base_url().'MenuCategory' ?>">Menu Category</a></li>
+            <?php } ?>
+
+            <?php if ($permission[29]) { ?>
+              <li><a href="<?= base_url().'MenuItem'?>">Menu Item</a></li>
+            <?php } ?>
+
+            <?php if ($permission[30]) { ?>
+              <li><a href="<?= base_url().'DiscountSetup'?>">Discount Setup</a></li>
+            <?php } ?>
+
+            <?php if ($permission[31]) { ?>
+              <li><a href="<?= base_url().'Payment' ?>">Payment Setup</a></li>
+            <?php } ?>
+
+          </ul>
         </li>
       <?php } ?>
 
-      <?php if ($permission[3]) { ?>
+      <?php if ($permission[32]) { ?>
+          <li class="menu-item"><a href="<?= base_url().'PostSchedule'?>">Post Scheduling</a></li>
+      <?php } ?>
+
+      <?php if ($permission[33] || $permission[34] || $permission[35] || $permission[36]) { ?>
         <li class="menu-item">
-          <a href="<?php echo base_url(); ?>Permission"> <span><i class="fas fa-user-lock"></i>Roles and Permission</span>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos" aria-expanded="false" aria-controls="pos"> <span>POS </span>
           </a>
+          <ul id="pos" class="collapse pl-0" aria-labelledby="pos">
+
+            <?php if ($permission[33]) { ?>
+              <li><a href="<?= base_url().'CashTray' ?>">Cash Tray In</a></li>
+            <?php } ?>
+
+            <?php if ($permission[34]) { ?>
+              <li><a href="<?= base_url().'OrderTaking' ?>">Dine In/Take Out</a></li>
+            <?php } ?>
+
+            <?php if ($permission[35]) { ?>
+              <li><a href="<?= base_url().'Recall' ?>">Recall</a></li>
+            <?php } ?>
+
+            <?php if ($permission[36]) { ?>
+              <li><a href="<?= base_url().'DiscountSetup' ?>">Discount</a></li>
+            <?php } ?>
+
+          </ul>
         </li>
       <?php } ?>
+
+      <?php if ($permission[37] || $permission[38]) { ?>
+        <li class="menu-item">
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos_reports" aria-expanded="false" aria-controls="pos_reports"> <span>Reports </span>
+          </a>
+          <ul id="pos_reports" class="collapse pl-0" aria-labelledby="pos_reports">
+
+            <?php if ($permission[37]) { ?>
+              <li><a href="#">Cashier Report</a></li>
+            <?php } ?>
+
+            <?php if ($permission[38]) { ?>
+              <li><a href="#">Sales Report</a></li>
+            <?php } ?>
+
+          </ul>
+        </li>
+      <?php } ?>
+
+      <li class="menu-item ml-3 font-weight-bold" style="letter-spacing: .3px"><span>MASTERFILE</span> </li>
 
       <?php if ($permission[4] || $permission[5] || $permission[6]) { ?>
         <li class="menu-item">
@@ -86,12 +146,7 @@
         </li>
       <?php } ?>
 
-      <?php if ($permission[7]) { ?>
-        <li class="menu-item">
-          <a href="<?php echo base_url(); ?>Approval"> <span><i class="fas fa-sliders-h"></i>Approval Setup</span>
-          </a>
-        </li>
-      <?php } ?>
+      <li class="menu-item ml-3 font-weight-bold" style="letter-spacing: .3px"><span>REPORTS</span> </li>
 
       <?php if ($permission[8] || $permission[9]) { ?>
         <li class="menu-item">
@@ -113,7 +168,7 @@
 
       <?php if ($permission[10] || $permission[11]) { ?>
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#Supplier" aria-expanded="false" aria-controls="Supplier"> <span><i class="fas fa-cart-plus"></i>Supplier </span>
+          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#Supplier" aria-expanded="false" aria-controls="Supplier"> <span><i class="fas fa-people-carry"></i>Supplier </span>
           </a>
           <ul id="Supplier" class="collapse" aria-labelledby="Supplier" data-parent="#side-nav-accordion">
 
@@ -146,15 +201,8 @@
           </ul>
         </li>
       <?php } ?>
-
-      <?php if ($permission[14] || $permission[15] || $permission[16] || $permission[17] || $permission[18] || $permission[19] || $permission[20] || $permission[21] || $permission[22] || $permission[23] || $permission[24] || $permission[25] || $permission[26]) { 
-        $inventory = ["InventoryGroup", "InventoryItem", "PurchaseRequest", "PurchaseOrder", "ListStocks", "StockInWarehouse", "StockOutWarehouse", "StockInDepartment", "TransferRequest"];
-        $inventoryClass = strposa($url, $inventory, 1) ? "show" : "";
-      ?>
-        <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#inventory_module" aria-expanded="false" aria-controls="inventory_module"> <span><i class="fas fa-boxes"></i>Inventory </span>
-          </a>
-          <ul id="inventory_module" class="collapse <?= $inventoryClass ?>" aria-labelledby="inventory_module" data-parent="#side-nav-accordion">
+      
+      <li class="menu-item ml-3 font-weight-bold" style="letter-spacing: .3px"><span>INVENTORY</span> </li>
 
             <?php if ($permission[14] || $permission[15]) { ?>
               <li class="menu-item">
@@ -248,98 +296,26 @@
               </li>
             <?php } ?>
 
-          </ul>
+      <li class="menu-item ml-3 font-weight-bold" style="letter-spacing: .3px"><span>SYSTEM SETTINGS</span> </li>
+
+      <?php if ($permission[2]) { ?>
+        <li class="menu-item">
+          <a href="<?php echo base_url(); ?>Company"> <span><i class="fa fa-building"></i>Company Setup</span>
+          </a>
         </li>
       <?php } ?>
 
-      <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31] || $permission[32] || $permission[33] || $permission[34] || $permission[35] || $permission[36] || $permission[37] || $permission[38]) { 
-        $pointofsale = ["MenuGroup", "MenuCategory", "MenuItem", "DiscountSetup", "Payment", "PostSchedule", "CashTray", "OrderTaking", "Recall", "DiscountSetup"];
-        $pointofsaleClass = strposa($url, $pointofsale, 1) ? "show" : "";
-      ?>
+      <?php if ($permission[3]) { ?>
         <li class="menu-item">
-          <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pointofsale" aria-expanded="false" aria-controls="pointofsale"> <span><i class="fas fa-utensils"></i>Point of Sale </span>
+          <a href="<?php echo base_url(); ?>Permission"> <span><i class="fas fa-user-lock"></i>Roles and Permission</span>
           </a>
-          <ul id="pointofsale" class="collapse <?= $pointofsaleClass ?>" aria-labelledby="pointofsale" data-parent="#side-nav-accordion">
+        </li>
+      <?php } ?>
 
-            <?php if ($permission[27] || $permission[28] || $permission[29] || $permission[30] || $permission[31]) { ?>
-              <li class="menu-item">
-                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos_masterfile" aria-expanded="false" aria-controls="pos_masterfile"> <span>Masterfile </span>
-                </a>
-                <ul id="pos_masterfile" class="collapse pl-0" aria-labelledby="pos_masterfile">
-
-                  <?php if ($permission[27]) { ?>
-                    <li><a href="<?= base_url().'MenuGroup' ?>">Menu Group</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[28]) { ?>
-                    <li><a href="<?= base_url().'MenuCategory' ?>">Menu Category</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[29]) { ?>
-                    <li><a href="<?= base_url().'MenuItem'?>">Menu Item</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[30]) { ?>
-                    <li><a href="<?= base_url().'DiscountSetup'?>">Discount Setup</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[31]) { ?>
-                    <li><a href="<?= base_url().'Payment' ?>">Payment Setup</a></li>
-                  <?php } ?>
-
-                </ul>
-              </li>
-            <?php } ?>
-
-            <?php if ($permission[32]) { ?>
-                <li><a href="<?= base_url().'PostSchedule'?>">Post Scheduling</a></li>
-            <?php } ?>
-
-            <?php if ($permission[33] || $permission[34] || $permission[35] || $permission[36]) { ?>
-              <li class="menu-item">
-                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos" aria-expanded="false" aria-controls="pos"> <span>POS </span>
-                </a>
-                <ul id="pos" class="collapse pl-0" aria-labelledby="pos">
-
-                  <?php if ($permission[33]) { ?>
-                    <li><a href="<?= base_url().'CashTray' ?>">Cash Tray In</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[34]) { ?>
-                    <li><a href="<?= base_url().'OrderTaking' ?>">Dine In/Take Out</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[35]) { ?>
-                    <li><a href="<?= base_url().'Recall' ?>">Recall</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[36]) { ?>
-                    <li><a href="<?= base_url().'DiscountSetup' ?>">Discount</a></li>
-                  <?php } ?>
-
-                </ul>
-              </li>
-            <?php } ?>
-
-            <?php if ($permission[37] || $permission[38]) { ?>
-              <li class="menu-item">
-                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#pos_reports" aria-expanded="false" aria-controls="pos_reports"> <span>Reports </span>
-                </a>
-                <ul id="pos_reports" class="collapse pl-0" aria-labelledby="pos_reports">
-
-                  <?php if ($permission[37]) { ?>
-                    <li><a href="#">Cashier Report</a></li>
-                  <?php } ?>
-
-                  <?php if ($permission[38]) { ?>
-                    <li><a href="#">Sales Report</a></li>
-                  <?php } ?>
-
-                </ul>
-              </li>
-            <?php } ?>
-
-          </ul>
+      <?php if ($permission[7]) { ?>
+        <li class="menu-item">
+          <a href="<?php echo base_url(); ?>Approval"> <span><i class="fas fa-th-list"></i>Approval Setup</span>
+          </a>
         </li>
       <?php } ?>
 

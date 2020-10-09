@@ -40,8 +40,8 @@
                           ?>
                           <span class="badge <?= $badge ?> w-100"><?= $status ?></span>
                         </td>
-                        <td>
-                          <div class="drop-down float-right">
+                        <td class="text-center">
+                          <!-- <div class="drop-down float-right">
                             <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="material-icons" style="font-size: 1.5rem">more_vert</i></a>
                             <ul class="dropdown-menu dropdown-menu-right">
                               <li class="ms-dropdown-list">
@@ -57,7 +57,15 @@
                                 </a>
                               </li>
                             </ul>
-                          </div>
+                          </div> -->
+                          <a class="btn btn-primary btn-edit-modal-department p-0" 
+                              href="javascript:void(0);"
+                              data-user_departmentid = "<?= $department['user_departmentID'] ?>"
+                              data-user_departmentname = "<?= $department['user_departmentName'] ?>"
+                              data-user_departmentstatus = "<?= $department['user_departmentStatus'] ?>"
+                              style="min-width: 80px">
+                              <i class="fas fa-pencil-alt" style="font-size: .8rem"></i>Edit
+                          </a>
                         </td>
                       </tr>
                     <?php } ?>

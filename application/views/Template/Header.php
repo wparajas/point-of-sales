@@ -21,19 +21,25 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\datatables.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\jquery.toast.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\style.css">  
-    <link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2.min.css' ?>">
+  <link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2.min.css' ?>">
+  <link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2-bootstrap.css' ?>">
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>pages\favicon.ico">
   <script src="<?php echo base_url(); ?>pages\assets\js\jquery-3.3.1.min.js"></script>
   <script src="<?php echo base_url();?>pages\assets\js\jquery.toast.min.js"></script>
   <script src="<?php echo base_url();?>pages\assets\js\toast.js"></script>
 
-
-
-
-
   <!-- Custom CSS for checkbox -->
-
   <link rel="stylesheet" href="<?= base_url().'pages/assets/css/custom/checkbox.css' ?>">
+
+  <style>
+    .has-error {
+      border-color: #dc3545 !important;
+    }
+    .no-error {
+      border-color: #09a561 !important;
+    }
+  </style>
+
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
   <!-- Preloader -->
