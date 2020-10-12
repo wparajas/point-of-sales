@@ -9,13 +9,13 @@
 
     	public function index()
     	{
-    		$data = array("title" => "ListStocks");
+    		$data = array("title" => "List of Stocks");
     		// if (isAllowed(1))$this->load->view('ListStocks/Index');
   			// else $this->load->view('ListStocks/Index');
 
-  			$this->load->view('Template/Header');
-  			$this->load->view('ListStocks/Index');
-  			$this->load->view('Template/Footer');
+  			$this->load->view('template/header');
+  			$this->load->view('listStocks/index');
+  			$this->load->view('template/footer');
     	}
 
    	}

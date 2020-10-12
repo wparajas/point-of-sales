@@ -62,7 +62,7 @@
 
 			$this->db->insert_batch('pos_rolemodule', $record);
 
-			return 'true|'.$description.' successfully created!';
+			return 'true|Added successfully';
 		}
 		else 
 		{
@@ -83,7 +83,7 @@
 			$this->db->where("roleID", $id);  
             $this->db->update("pos_rolemstr", $data);  
 
-			return 'true|'.$description.' successfully updated!';
+			return 'true|Updated successfully';
 		}
 		else 
 		{

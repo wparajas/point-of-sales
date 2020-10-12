@@ -12,10 +12,10 @@
     	public function index()
     	{
          $data = array("title" => "Menu Category");
-        $data['data']=$this->menucategory->get_all_menucategory();
-  			$this->load->view('Template/Header');
-  			$this->load->view('MenuCategory/Index',$data);
-  			$this->load->view('Template/Footer');
+			$data['data']=$this->menucategory->get_all_menucategory();
+  			$this->load->view('template/header',$data);
+  			$this->load->view('menuCategory/index',$data);
+  			$this->load->view('template/footer');
     	}
 
       public function save()

@@ -10,9 +10,11 @@
 
 		public function index() 
 		{ 
-	  		$this->load->view('Template/Header');
-			$this->load->view('DiscountSetup/Index');
-			$this->load->view('Template/Footer');
+			$data['title'] = "Discount Setup";
+
+	  		$this->load->view('template/header', $data);
+			$this->load->view('discountSetup/index');
+			$this->load->view('template/footer');
 		}
 
 	}		

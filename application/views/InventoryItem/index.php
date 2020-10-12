@@ -568,7 +568,7 @@
             $("#confirmation-"+todo+"-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'InventoryItem' ?>');
+            window.location.replace('<?= base_url().'inventoryitem' ?>');
           }
         }
       })

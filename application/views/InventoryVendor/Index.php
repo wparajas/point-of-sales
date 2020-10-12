@@ -116,7 +116,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Contact Number <strong class="text-red">*</strong></label>
-              <input type="text" autocomplete="off" class="form-control contactnumber" maxlength="11" name="add-inventory_vendorContactnumber" id="add-inventory_vendorContactnumber">
+              <input type="text" autocomplete="off" class="form-control contactnumber" maxlength="13" name="add-inventory_vendorContactnumber" id="add-inventory_vendorContactnumber">
               <div class="invalid-feedback" id="add-invalid-inventory_vendorContactnumber"></div>
             </div>
           </div>
@@ -222,7 +222,7 @@
           <div class="col-6">
             <div class="form-group">
               <label>Contact Number <strong class="text-red">*</strong></label>
-              <input type="text" autocomplete="off" class="form-control contactnumber" maxlength="11" name="edit-inventory_vendorContactnumber" id="edit-inventory_vendorContactnumber">
+              <input type="text" autocomplete="off" class="form-control contactnumber" maxlength="13" name="edit-inventory_vendorContactnumber" id="edit-inventory_vendorContactnumber">
               <div class="invalid-feedback" id="edit-invalid-inventory_vendorContactnumber"></div>
             </div>
           </div>
@@ -363,7 +363,7 @@
             $("#confirmation-"+todo+"-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'InventoryVendor' ?>');
+            window.location.replace('<?= base_url().'inventoryvendor' ?>');
           }
         }
       })

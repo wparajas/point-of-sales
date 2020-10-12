@@ -9,14 +9,15 @@
 
 		public function index() 
 		{ 
+			$data['title'] = "Inventory Item";
 			$data['inventory_items'] = $this->inventoryitem->getAllInventoryItems();
 			$data["inventory_storages"] = $this->inventoryitem->getAllInventoryStorages();
 			$data["inventory_groups"] = $this->inventoryitem->getAllInventoryGroups();
 			$data["measurements"] = $this->inventoryitem->getAllMeasurements();
 
-	  		$this->load->view('Template/Header');
-			$this->load->view('InventoryItem/Index', $data);
-			$this->load->view('Template/Footer');
+	  		$this->load->view('template/header', $data);
+			$this->load->view('inventoryItem/index', $data);
+			$this->load->view('template/footer');
 		}
 
 		public function loadWarehouseDetails()

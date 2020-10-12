@@ -9,13 +9,13 @@
 
     	public function index()
     	{
-    		$data = array("title" => "Stock out Warehouse");
+    		$data = array("title" => "Stock Out Warehouse");
     		// if (isAllowed(1))$this->load->view('StockOutWarehouse/Index');
   			// else $this->load->view('StockOutWarehouse/Index');
 
-  			$this->load->view('Template/Header');
-  			$this->load->view('StockOutWarehouse/Index');
-  			$this->load->view('Template/Footer');
+  			$this->load->view('template/header', $data);
+  			$this->load->view('stockOutWarehouse/index');
+  			$this->load->view('template/footer');
     	}
 
    	}

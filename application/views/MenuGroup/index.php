@@ -110,12 +110,12 @@
           <div class="row">
             <div class="col-12 p-2">
               <label>Group Name <strong class="text-red">*</strong></label>
-              <input type="text" class="form-control letterswithspace" name="addmenuname"id="addmenuname" placeholder="Please enter Group name" description="group name">
+              <input type="text" class="form-control alphanumericwithspace" name="addmenuname"id="addmenuname" placeholder="Please enter Group name" description="group name">
               <div class="invalid-feedback" id="add-menuname"></div>
             </div>
             <div class="col-12 p-2">
               <label>Group Description <strong class="text-red">*</strong></label>
-              <textarea class="form-control" id="addmenudescription" name="addmenudescription" placeholder="Please enter Group Description" description="description"></textarea>
+              <textarea class="form-control lettersonly" id="addmenudescription" name="addmenudescription" placeholder="Please enter Group Description" description="description"></textarea>
                <div class="invalid-feedback" id="add-menudescription"></div>
             </div>
 
@@ -155,7 +155,7 @@
           	 	<img style="margin:auto;" width="230px" height="100px" src="<?php echo base_url();?>pages\assets\img\modal\confirmation.png">	
           	</div>
           <h1 class="text-red" style="margin:auto;">ADD MENU GROUP</h1>
-          <span class="text-secondary" style="margin:auto;">Are you sure you want to add new Menu Group?</span>
+          <span class="text-secondary" style="margin:auto;">Are you sure you want to add menu group?</span>
           </div>
         </div>
       </div>
@@ -186,12 +186,12 @@
           <div class="row">
             <div class="col-12 p-2">
               <label>Group Name <strong class="text-red">*</strong></label>
-              <input type="text" class="form-control"  id="editmenugroup" name="editmenugroup">
+              <input type="text" class="form-control alphanumericwithspace"  id="editmenugroup" name="editmenugroup">
                <div class="invalid-feedback" id="edit-menugroup"></div>
             </div>
             <div class="col-12 p-2">
               <label>Group Description <strong class="text-red">*</strong></label>
-              <textarea class="form-control" id="editmenugroupdescription" name="editmenugroupdescription"></textarea>
+              <textarea class="form-control lettersonly" id="editmenugroupdescription" name="editmenugroupdescription"></textarea>
                <div class="invalid-feedback" id="edit-menugroupdescription"></div>
             </div>
 
@@ -232,7 +232,7 @@
           <img style="margin:auto;" width="230px" height="100px" src="<?php echo base_url();?>pages\assets\img\modal\confirmation.png">
           <br>
           <h1 class="text-red" style="margin:auto;">UPDATE MENU GROUP</h1>
-          <span class="text-secondary" style="margin:auto;">Are you sure you want to update Menu Group?</span>
+          <span class="text-secondary" style="margin:auto;">Are you sure you want to update menu group?</span>
           </div>
         </div>
       </div>
@@ -338,7 +338,7 @@
           $('#add_menu_group').show();
           
         }else{
-          window.location.replace('<?php echo base_url(); ?>Menugroup');
+          window.location.replace('<?php echo base_url(); ?>menugroup');
         }
         },
         error: function(request, textStatus, error) {

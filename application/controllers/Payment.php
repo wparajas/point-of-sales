@@ -9,9 +9,11 @@
 
     	public function index()
     	{
-  			$this->load->view('Template/Header');
-  			$this->load->view('Payment/Index');
-  			$this->load->view('Template/Footer');
+			$data['title'] = "Payment";
+
+  			$this->load->view('template/header', $data);
+  			$this->load->view('payment/index');
+  			$this->load->view('template/footer');
     	}
 
    	}

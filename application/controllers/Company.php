@@ -22,9 +22,9 @@
       $data['company_profile'] = $this->company->getCompanyProfile($company_profileID);
       $data['company_business'] = $this->company->getCompanyBusiness($company_profileID);
 
-			$this->load->view('Template/Header');
-			$this->load->view('Company/Index', $data);
-			$this->load->view('Template/Footer');
+			$this->load->view('template/header', $data);
+			$this->load->view('company/index', $data);
+			$this->load->view('template/footer');
   	}
 
     public function saveCompanyDetails()

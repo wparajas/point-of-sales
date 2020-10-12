@@ -2,9 +2,11 @@
    class StockInDepartment extends CI_Controller {  
 		public function index() 
 		{ 
-	  		$this->load->view('Template/Header');
-			$this->load->view('StockInDepartment/Index');
-			$this->load->view('Template/Footer');
+			$data['title'] = "Stock In Department";
+
+	  		$this->load->view('template/header', $data);
+			$this->load->view('stockInDepartment/index');
+			$this->load->view('template/footer');
 		}
 
 	}		

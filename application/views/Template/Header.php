@@ -1,6 +1,10 @@
 
 
-  <?php if($this->session->has_userdata('userdata')){ }else{ redirect(base_url()); } ?>
+  <?php if($this->session->has_userdata('userdata')){ 
+    $userdata = $this->session->userdata("userdata");
+    $fullname = $userdata["user_accountFirstname"]." ".$userdata["user_accountLastname"];
+    // echo $fullname;
+  }else{ redirect(base_url()); } ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +12,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blackcoders Restaurants</title>
+  <title>Point of Sale - <?= $title; ?></title>
    <!--  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url();?>pages\vendors\iconic-fonts\font-awesome\css\all.min.css">
@@ -21,25 +25,21 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\datatables.min.css">
   <link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\jquery.toast.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\style.css">  
-  <link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2.min.css' ?>">
-  <link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2-bootstrap.css' ?>">
+<link rel="stylesheet" href="<?= base_url().'pages/assets/css/select2.min.css' ?>">
+<link rel="stylesheet" href="<?php echo base_url();?>pages\assets\css\select2-bootstrap.css"> 
 	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>pages\favicon.ico">
   <script src="<?php echo base_url(); ?>pages\assets\js\jquery-3.3.1.min.js"></script>
   <script src="<?php echo base_url();?>pages\assets\js\jquery.toast.min.js"></script>
   <script src="<?php echo base_url();?>pages\assets\js\toast.js"></script>
+  
+
+
+
+
 
   <!-- Custom CSS for checkbox -->
+
   <link rel="stylesheet" href="<?= base_url().'pages/assets/css/custom/checkbox.css' ?>">
-
-  <style>
-    .has-error {
-      border-color: #dc3545 !important;
-    }
-    .no-error {
-      border-color: #09a561 !important;
-    }
-  </style>
-
 </head>
 <body class="ms-body ms-aside-left-open ms-primary-theme ms-has-quickbar">
   <!-- Preloader -->
@@ -84,22 +84,9 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
             <li class="dropdown-menu-header">
-              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Anny Farisha</span></h6>
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, <?= $fullname ?></span></h6>
             </li>
             <li class="dropdown-divider"></li>
-            <li class="ms-dropdown-list">
-              <a class="media fs-14 p-2" href="pages\prebuilt-pages\user-profile.html"> <span><i class="flaticon-user mr-2"></i> Profile</span>
-              </a>
-              <a class="media fs-14 p-2" href="pages\apps\email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span>
-              </a>
-              <a class="media fs-14 p-2" href="pages\prebuilt-pages\user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span>
-              </a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li class="dropdown-menu-footer">
-              <a class="media fs-14 p-2" href="pages\prebuilt-pages\lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span>
-              </a>
-            </li>
             <li class="dropdown-menu-footer"> 
               <span class="green-text"><a class="media fs-14 p-2" href="<?= base_url().'Login/logout' ?>"> <span><i class="flaticon-shut-down mr-2"></i> Logout</span></a></span>
            

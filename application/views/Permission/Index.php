@@ -80,7 +80,7 @@
   		<div class="modal-body">
 				<div class="form-group">
 					<label>Role Name</label>
-					<input type="text" name="add-user_roleName" id="add-user_roleName" class="form-control" placeholder="Enter role name">
+					<input type="text" name="add-user_roleName" id="add-user_roleName" class="form-control alphanumericwithspace" placeholder="Enter role name">
           <div class="invalid-feedback" id="add-invalid-user_roleName"></div>
 				</div>
   		</div>
@@ -102,7 +102,7 @@
       		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   			<img class="isometric confirmationisometric" width="230px" height="100px" style="text-align: center" src="<?=base_url(); ?>pages/assets/img/modal/confirmation.png">
   			<h1 class="text-red text-center font-weight-bold">ADD ROLE</h1>
-            <p class="text-center my-2">Are you sure you want to add new Role?</p>
+            <p class="text-center my-2">Are you sure you want to add role?</p>
             <div class="invalid-feedback" id="confirmation-add-invalid"></div>
     		</div>
     		<div class="modal-footer">
@@ -128,7 +128,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Role Name</label>
-          <input type="text" name="edit-user_roleName" id="edit-user_roleName" class="form-control" placeholder="Enter role name">
+          <input type="text" name="edit-user_roleName" id="edit-user_roleName" class="form-control alphanumericwithspace" placeholder="Enter role name">
           <div class="invalid-feedback" id="edit-invalid-user_roleName"></div>
         </div>
       </div>
@@ -347,7 +347,7 @@
                   $('#add_userrole').show();
                   $("#add-user_roleName").focus(); 
                   }else{
-                  window.location.replace('<?php echo base_url(); ?>Permission');
+                  window.location.replace('<?php echo base_url(); ?>permission');
                   }
                   },
                   error: function(request, textStatus, error) {

@@ -10,14 +10,14 @@
 
 		public function index() 
 		{
-			$data = array('title' => 'Department');
+			$data = array('title' => 'User Department');
 
 			$data["departments"] = $this->userdepartment->getAllUserDepartment();
 			$data["department_lastID"] = $this->userdepartment->getUserDepartmentLastID();
 
-			$this->load->view('Template/Header');
-			$this->load->view('UserDepartment/Index', $data);
-			$this->load->view('Template/Footer');
+			$this->load->view('template/header',$data);
+			$this->load->view('userDepartment/index', $data);
+			$this->load->view('template/footer');
 		}
 
 		public function save()

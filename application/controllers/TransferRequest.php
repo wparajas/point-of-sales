@@ -2,9 +2,11 @@
    class TransferRequest extends CI_Controller {  
 		public function index() 
 		{ 
-	  		$this->load->view('Template/Header');
-			$this->load->view('TransferRequest/Index');
-			$this->load->view('Template/Footer');
+			$data['title'] = "Transfer Request";
+
+	  		$this->load->view('template/header', $data);
+			$this->load->view('tansferRequest/index');
+			$this->load->view('template/footer');
 		}
 
 	}		

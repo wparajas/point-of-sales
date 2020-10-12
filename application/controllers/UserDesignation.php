@@ -9,13 +9,13 @@
 
 		public function index() 
 		{ 
-			$data = array('title' => 'Designation');
+			$data = array('title' => 'User Designation');
 			$data['userdepartment'] = $this->userdesignation->getAllUserDepartment();
 			$data['userdesignation'] = $this->userdesignation->getAllUserDesignation();
 			
-	  		$this->load->view('Template/Header');
-			$this->load->view('UserDesignation/Index', $data);
-			$this->load->view('Template/Footer');
+	  		$this->load->view('template/header', $data);
+			$this->load->view('userDesignation/index', $data);
+			$this->load->view('template/footer');
 		}
 
 		public function save()

@@ -14,13 +14,14 @@ class UserAccount extends CI_Controller {
 	public function index()
 	{
 		$data = array('title' => 'User Account');
+		
 		$data['useraccount'] = $this->useraccount->getAllUserAccount();
 		$data['userdepartment'] = $this->useraccount->getAllUserDepartment();
 		$data['userrole'] = $this->useraccount->getAllUserRole();
 
-		$this->load->view('Template/Header');
-		$this->load->view('UserAccount/Index', $data);
-		$this->load->view('Template/Footer');
+		$this->load->view('template/header',$data);
+		$this->load->view('userAccount/index', $data);
+		$this->load->view('template/footer');
 	}
 
 	public function loadDesignation()

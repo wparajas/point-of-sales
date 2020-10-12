@@ -10,11 +10,12 @@
 
     	public function index()
     	{
+			$data['title'] = "Inventory Group";
 			$data['inventory_groups'] = $this->inventorygroup->getAllInventoryGroup();
 
-  			$this->load->view('Template/Header');
-  			$this->load->view('InventoryGroup/Index', $data);
-  			$this->load->view('Template/Footer');
+  			$this->load->view('template/header', $data);
+  			$this->load->view('inventoryGroup/index', $data);
+  			$this->load->view('template/footer');
 		}
 		
 		public function save()

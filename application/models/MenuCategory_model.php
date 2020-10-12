@@ -31,11 +31,11 @@ class MenuCategory_model extends CI_Model
 					'menucategorystatus' => $addstatus);
 
 			$this->db->insert('pos_menucategory', $data);
-				return 'true|'.$addmenucategory.' successfully created!';
+			return "true|".$addmenucategory.' added successfully';
 		}
 		else 
 		{
-			return 'false|Menu Category name already exist!';
+			return "false|".$addmenucategory." already exists";
 		}   
 
 	}
@@ -52,11 +52,11 @@ class MenuCategory_model extends CI_Model
 		$this->db->where("menucategoryid", $id);  
         $this->db->update("pos_menucategory", $data);  
 
-       return 'true|'.$editgroupategory.' successfully updated!';
+	   		return "true|".$editgroupategory.' updated successfully';
 		}
 		else 
 		{
-			return 'false|Menu category already exist!';
+			return "false|".$editgroupategory." already exists";
 		}   
 
 		

@@ -13,9 +13,9 @@
   		// if (isAllowed(1))$this->load->view('Dashboard/Index');
 		// else $this->load->view('Dashboard/Index');
 
-			$this->load->view('Template/Header');
-			$this->load->view('OrderTaking/Index');
-			$this->load->view('Template/Footer');
+			$this->load->view('template/header', $data);
+			$this->load->view('orderTaking/index');
+			$this->load->view('template/footer');
   	}
 
  	}

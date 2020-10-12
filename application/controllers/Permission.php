@@ -16,14 +16,14 @@
     	{
     	
     	
-        $data = array('title' => 'Roles & Permissions');
+        $data = array('title' => 'Roles and Permissions');
 
         $data['role']=$this->permission->get_all_roles();
         $data['module']=$this->permission->get_modules(1);
 
-      $this->load->view("Template/Header",$data);
-      $this->load->view("Permission/Index",$data);
-      $this->load->view("Template/Footer",$data);
+      $this->load->view("template/header",$data);
+      $this->load->view("permission/index",$data);
+      $this->load->view("template/footer",$data);
     	}
 
      public function changestatus() 

@@ -190,7 +190,7 @@
                               <div class="col-md-6 mb-3">
                                   <label for="cnum">Contact Number<code>*</code></label>
                                   <div class="input-group">
-                                      <input type="text" class="form-control contactnumber" name="cnum" id="add-user_accountContactnumber" name="add-user_accountContactnumber"  placeholder="Enter contact number" required="" autocomplete="off" maxlength="11">
+                                      <input type="text" class="form-control contactnumber" name="cnum" id="add-user_accountContactnumber" name="add-user_accountContactnumber"  placeholder="Enter contact number" required="" autocomplete="off" maxlength="13">
                                       <div class="invalid-feedback" id="add-invalid-user_accountContactnumber"></div>
                                   </div>
                               </div>
@@ -365,7 +365,7 @@
                               <div class="col-md-6 mb-3">
                                   <label for="cnum">Contact Number<code>*</code></label>
                                   <div class="input-group">
-                                      <input type="text" class="form-control contactnumber" name="cnum" id="edit-user_accountContactnumber" name="edit-user_accountContactnumber"  placeholder="Enter contact number" required="" autocomplete="off" maxlength="11">
+                                      <input type="text" class="form-control contactnumber" name="cnum" id="edit-user_accountContactnumber" name="edit-user_accountContactnumber"  placeholder="Enter contact number" required="" autocomplete="off" maxlength="13">
                                       <div class="invalid-feedback" id="edit-invalid-user_accountContactnumber"></div>
                                   </div>
                               </div>
@@ -546,7 +546,7 @@
             $("#confirmation-"+todo+"-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'UserAccount' ?>');
+            window.location.replace('<?= base_url().'useraccount' ?>');
           }
         }
       })

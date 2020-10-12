@@ -2,9 +2,11 @@
    class MenuItem extends CI_Controller {  
 		public function index() 
 		{ 
-	  		$this->load->view('Template/Header');
-			$this->load->view('MenuItem/Index');
-			$this->load->view('Template/Footer');
+			$data['title'] = "Menu Item";
+			
+	  		$this->load->view('template/header', $data);
+			$this->load->view('menuItem/index');
+			$this->load->view('template/footer');
 		}
 
 	}		

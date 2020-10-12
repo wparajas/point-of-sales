@@ -11,12 +11,13 @@
 
     	public function index()
     	{
+			$data = array("title" => "Inventory Storage");
         	$data['inventory_storage'] = $this->inventorystorage->getAllInventoryStorage();
         	$data['user_department'] = $this->inventorystorage->getAllUserDepartment();
 
-  			$this->load->view('Template/Header');
-  			$this->load->view('InventoryStorage/Index', $data);
-  			$this->load->view('Template/Footer');
+  			$this->load->view('template/header',$data);
+  			$this->load->view('inventoryStorage/index', $data);
+  			$this->load->view('template/footer');
     	}
 
       	public function save()

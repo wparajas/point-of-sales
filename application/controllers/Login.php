@@ -16,7 +16,7 @@
 			// if ($this->session->has_userdata('userdata')){
 			// 	redirect(base_url() .'Dashboard');
 			// }
-			$this->load->view("Login/Index");
+			$this->load->view("login/index");
 		}
 
 		public function login_validation()
@@ -40,7 +40,7 @@
 				{
 					$this->session->set_userdata('userdata', $userdata);
 					$this->session->set_flashdata('success', 'Log in successfully!');
-					redirect(base_url() .'Dashboard');
+					redirect(base_url() .'dashboard');
 				} 
 				else
 				{

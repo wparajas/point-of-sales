@@ -367,7 +367,7 @@
 						$("#confirmation-edit-invalid").html(result[1]);
 						showErrorToast(result[1]);
 					} else {
-						window.location.replace('<?= base_url().'Company' ?>');
+						window.location.replace('<?= base_url().'company' ?>');
 					}
 				}
 			})

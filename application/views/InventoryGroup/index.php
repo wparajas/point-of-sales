@@ -279,7 +279,7 @@
             $("#confirmation-"+todo+"-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'InventoryGroup' ?>');
+            window.location.replace('<?= base_url().'inventorygroup' ?>');
           }
         }
       })

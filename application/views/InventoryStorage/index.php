@@ -161,7 +161,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="confirmation_add" tabindex="-1" role="dialog" aria-labelledby="confirmation_add" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog modal-dialog-centered modal-min" role="document">
     <div class="modal-content">
@@ -340,7 +339,7 @@
             $("#confirmation-"+todo+"-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'InventoryStorage' ?>');
+            window.location.replace('<?= base_url().'inventorystorage' ?>');
           }
         }
       })

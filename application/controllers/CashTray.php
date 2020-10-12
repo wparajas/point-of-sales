@@ -2,9 +2,11 @@
    class CashTray extends CI_Controller {  
 		public function index() 
 		{ 
-	  		$this->load->view('Template/Header');
-			$this->load->view('CashTray/Index');
-			$this->load->view('Template/Footer');
+			$data['title'] = "Cash Tray";
+
+	  		$this->load->view('template/header', $data);
+			$this->load->view('cashTray/index');
+			$this->load->view('template/footer');
 		}
 
 	}		

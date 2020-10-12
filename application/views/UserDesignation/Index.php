@@ -351,7 +351,7 @@
             $("#confirmation-edit-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'UserDesignation' ?>');
+            window.location.replace('<?= base_url().'userdesignation' ?>');
           }
         }
       })
@@ -370,7 +370,7 @@
             $("#confirmation-add-invalid").html(result[1]);
             showErrorToast(result[1]);
           } else {
-            window.location.replace('<?= base_url().'UserDesignation' ?>');
+            window.location.replace('<?= base_url().'userdesignation' ?>');
           }
         }
       })

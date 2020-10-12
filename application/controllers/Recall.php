@@ -9,13 +9,13 @@
 
   	public function index()
   	{
-  		$data = array("title" => "Approval");
+  		$data = array("title" => "Recall");
   		// if (isAllowed(1))$this->load->view('Dashboard/Index');
 		// else $this->load->view('Dashboard/Index');
 
-			$this->load->view('Template/Header');
-			$this->load->view('Recall/Index');
-			$this->load->view('Template/Footer');
+			$this->load->view('template/header', $data);
+			$this->load->view('recall/index');
+			$this->load->view('template/footer');
   	}
 
  	}

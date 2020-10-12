@@ -15,9 +15,9 @@
       $data['module']=$this->approval->get_all_modules();
        $data['data']=$this->approval->get_approver(16);
 
-			$this->load->view("Template/Header",$data);
-			$this->load->view('Approval/Index',$data);
-			$this->load->view("Template/Footer",$data);
+			$this->load->view("template/header",$data);
+			$this->load->view('approval/index',$data);
+			$this->load->view("template/footer",$data);
   	}
 
     public function save() 

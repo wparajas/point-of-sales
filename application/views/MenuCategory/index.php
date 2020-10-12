@@ -122,7 +122,7 @@
             </div>
             <div class="col-12 p-2">
               <label>Menu Category<strong class="text-red"> *</strong></label>
-              <input class="form-control" placeholder="Please enter Group Category" id="addmenucategory" name="addmenucategory" description="menu category">
+              <input class="form-control alphanumericwithspace" placeholder="Please enter Group Category" id="addmenucategory" name="addmenucategory" description="menu category">
               <div class="invalid-feedback" id="add-menucategory"></div>    
             </div>
 
@@ -162,7 +162,7 @@
           	 	<img style="margin:auto;" width="230px" height="100px" src="<?php echo base_url();?>pages\assets\img\modal\confirmation.png">	
           	</div>
           <h1 class="text-red" style="margin:auto;">ADD MENU GROUP</h1>
-          <span class="text-secondary" style="margin:auto;">Are you sure you want to add new Menu Category?</span>
+          <span class="text-secondary" style="margin:auto;">Are you sure you want to add menu category?</span>
           </div>
         </div>
       </div>
@@ -193,7 +193,7 @@
           <div class="row">
             <div class="col-12 p-2">
               <label>Menu Group<strong class="text-red"> *</strong></label>
-              <select class="form-control select2" name="edit_groupname"id="edit_groupname" style="width: 100%;" description="menu group">
+              <select class="form-control select2 alphanumericwithspace" name="edit_groupname"id="edit_groupname" style="width: 100%;" description="menu group">
                 <option disabled>Please select menu group</option>
                 <?php
                     foreach($data['menugroup'] as $item)
@@ -206,7 +206,7 @@
             </div>
             <div class="col-12 p-2">
               <label>Menu Category<strong class="text-red"> *</strong></label>
-              <input class="form-control" value="Pork" name="edit_groupategory" id="edit_groupategory" description="menu category">
+              <input class="form-control alphanumericwithspace" value="Pork" name="edit_groupategory" id="edit_groupategory" description="menu category">
               <div class="invalid-feedback" id="edit-groupategory"></div> 
             </div>
 
@@ -246,7 +246,7 @@
           <img style="margin:auto;" width="230px" height="100px" src="<?php echo base_url();?>pages\assets\img\modal\confirmation.png">
           <br>
           <h1 class="text-red" style="margin:auto;">UPDATE MENU CATEGORY</h1>
-          <span class="text-secondary" style="margin:auto;">Are you sure you want to update Menu Category?</span>
+          <span class="text-secondary" style="margin:auto;">Are you sure you want to update menu category?</span>
           </div>
         </div>
       </div>
@@ -368,7 +368,8 @@
           $('#add_menu_group_category').show();
           
         }else{
-          window.location.replace('<?php echo base_url(); ?>MenuCategory');
+          window.location.replace('<?php echo base_url(); ?>menucategory');
+          
         }
         },
         error: function(request, textStatus, error) {
@@ -423,7 +424,6 @@
        var editgroupname = $('#edit_groupname').val();
        var editgroupategory = $('#edit_groupategory').val();
        var editstatus = $('input[name="editstatus"]:checked').val();
-       alert(editstatus);
 
 
        $.ajax({
